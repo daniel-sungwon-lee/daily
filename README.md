@@ -1,2 +1,2 @@
-# daily
-The daily routine scheduler 
+# Daily
+The daily routine scheduler
