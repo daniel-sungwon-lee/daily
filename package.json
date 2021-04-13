@@ -1,0 +1,39 @@
+{
+  "name": "daily",
+  "version": "1.0.0",
+  "description": "The daily routine scheduler",
+  "author": {
+    "name": "Daniel Sungwon Lee",
+    "website": "https://danielsungwonlee.netlify.app/",
+    "github": "https://github.com/daniel-sungwon-lee"
+  },
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "start": "node server.js",
+    "db:import": "bash scripts/db-import.bash",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daniel-sungwon-lee/daily.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daniel-sungwon-lee/daily/issues"
+  },
+  "homepage": "https://github.com/daniel-sungwon-lee/daily#readme",
+  "devDependencies": {
+    "concurrently": "^6.0.2",
+    "nodemon": "^2.0.7"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.6.0"
+  }
+}
