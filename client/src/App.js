@@ -1,7 +1,8 @@
 import './App.css';
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Nav from './components/nav'
+import Nav from './components/nav';
+import Progress from './components/progress';
 import Home from './pages/home';
 
 function App() {
@@ -10,7 +11,11 @@ function App() {
   return (
     <div className="App">
       <Router>
+
+        <Progress />
+
         <Nav loading={loading} setLoading={setLoading} />
+
         <Switch>
 
         <Route exact path="/">

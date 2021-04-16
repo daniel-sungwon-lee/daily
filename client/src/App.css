@@ -14,3 +14,7 @@
 .nav-p:hover {
   color: #C5DAFA;
 }
+
+.MuiLinearProgress-root.MuiLinearProgress-colorPrimary {
+  background-color: transparent;
+}
