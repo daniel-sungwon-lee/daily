@@ -36,7 +36,7 @@ export default function Home(props) {
     <div className="container" style={{ paddingBottom: "6rem" }}>
 
 
-      <div className="d-flex align-items-center flex-column">
+      <div className="d-flex align-items-center flex-column mb-4">
         {loading ? <Skeleton className={classes.skeleton} height="130px" width="50%"
                     style={{marginTop: "-2rem", marginBottom: "-0.35rem"}} />
                  : <>
@@ -46,8 +46,8 @@ export default function Home(props) {
                  }
       </div>
 
-      <Skeleton variant="rect" className={classes.skeleton}>
-
+      <Skeleton variant="rect" className={classes.skeleton} width="100%">
+        <div className="p-5"></div>
       </Skeleton>
 
     </div>
