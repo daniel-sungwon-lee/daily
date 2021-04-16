@@ -40,7 +40,7 @@ export default function Home(props) {
         {loading ? <Skeleton className={classes.skeleton} height="130px" width="50%"
                     style={{marginTop: "-2rem", marginBottom: "-0.35rem"}} />
                  : <>
-                    <h2>{`Today's Date: ${date}`}</h2>
+                    <h2>{date}</h2>
                     <h2>{time}</h2>
                    </>
                  }
