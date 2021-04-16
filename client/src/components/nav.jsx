@@ -8,7 +8,7 @@ const useStyles = makeStyles({
   },
   popover: {
     width: "14rem",
-    marginTop: "1.25rem"
+    marginTop: "1.1rem"
   }
 })
 
