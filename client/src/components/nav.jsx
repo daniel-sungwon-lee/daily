@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AppBar, Fade, Popover, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import New from './new';
 
 const useStyles = makeStyles({
   nav: {
@@ -16,6 +17,7 @@ export default function Nav(props) {
   const classes = useStyles()
   const [info, setInfo] = useState(false)
   const [anchor, setAnchor] = useState(null)
+  const [open, setOpen] = useState(false)
 
   const handleInfo = (event) => {
     setAnchor(event.currentTarget)
@@ -35,9 +37,12 @@ export default function Nav(props) {
             </a>
 
             <div className="d-flex mx-2">
-              <p className="mr-2 my-0 nav-p">
+
+              <p className="mr-2 my-0 nav-p" onClick={() => setOpen(true)}>
                 new
               </p>
+              <New open={open} setOpen={setOpen} />
+
               <p className="mx-4 my-0 nav-p" onClick={handleInfo}>
                 info
               </p>
@@ -53,6 +58,7 @@ export default function Nav(props) {
               <a href="#top" className="text-decoration-none nav-p ml-2">
                 top
               </a>
+
             </div>
 
           </Toolbar>

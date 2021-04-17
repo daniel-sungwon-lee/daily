@@ -18,3 +18,10 @@
 .MuiLinearProgress-root.MuiLinearProgress-colorPrimary {
   background-color: transparent;
 }
+
+.MuiFormLabel-root.Mui-focused {
+  color: #4F5DFF !important;
+}
+.MuiInput-root.MuiInput-underline:after {
+  border-bottom-color: #4F5DFF !important;
+}
