@@ -23,6 +23,11 @@ export default function New(props) {
   const [from, setFrom] = useState(new Date())
   const [to, setTo] = useState(new Date())
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+  }
+
   return (
     <Dialog open={open} onClose={() => setOpen(false)} classes={{ paper: classes.dialog }}
      scroll="body" TransitionComponent={Grow}>
@@ -32,10 +37,10 @@ export default function New(props) {
           New Daily Routine
         </DialogTitle>
 
-        <form>
+        <form onSubmit={handleSubmit}>
           <DialogContent>
 
-            <div>
+            <div className="mb-2">
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
 
                 <KeyboardTimePicker label="From" placeholder="3:00 PM" mask="__:__ _M"
