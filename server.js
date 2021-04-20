@@ -47,7 +47,6 @@ function errorMiddleware(err, req, res, next) {
 
 //add new
 app.post('/api/routines', (req, res, next) => {
-  console.log(req.body)
   const { from, to, action } = req.body;
 
   const sql = `
