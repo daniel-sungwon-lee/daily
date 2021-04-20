@@ -33,7 +33,7 @@ export default function New(props) {
     e.preventDefault()
     const reqBody = { from, to, action }
 
-    fetch('/api/daily', {
+    fetch('/api/routines', {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reqBody)
