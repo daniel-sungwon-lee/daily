@@ -31,7 +31,10 @@ export default function New(props) {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const reqBody = { from, to, action }
+
+    const fromTime = from.toLocaleTimeString([], { timeStyle: "short" })
+    const toTime = to.toLocaleTimeString([], { timeStyle: "short" })
+    const reqBody = { from: fromTime, to: toTime, action }
 
     fetch('/api/routines', {
       method: "POST",
