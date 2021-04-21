@@ -14,6 +14,7 @@ export default function Home(props) {
   const classes = useStyles()
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
+  const [data, setData] = useState([])
 
   useEffect(() => {
     let currentDate = new Date()
@@ -22,6 +23,14 @@ export default function Home(props) {
     setDate(currentDate.toLocaleDateString(undefined, options))
 
     setTime(currentDate.toLocaleTimeString())
+
+    fetch('/api/routines')
+      .then(res => res.json())
+      .then(data => {
+        setData(data)
+
+      })
+      .catch(() => window.location.reload())
 
     if(date && time !== '') {
       setLoading(false)

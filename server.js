@@ -63,7 +63,7 @@ app.post('/api/routines', (req, res, next) => {
 })
 
 //home
-app.get('api/routines', (req, res, next) => {
+app.get('/api/routines', (req, res, next) => {
 
   const sql= `
   select * from "routines"
