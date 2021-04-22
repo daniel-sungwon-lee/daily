@@ -1,12 +1,26 @@
 import React, { useEffect, useState } from 'react';
-import { Paper } from '@material-ui/core';
+import { Avatar, Paper } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
+import { Schedule } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
 
 const useStyles = makeStyles({
   skeleton: {
     borderRadius: "1rem"
+  },
+  paper: {
+    padding: "3rem",
+    borderRadius: "1rem"
+  },
+  action: {
+    color: "#4F5DFF"
+  },
+  avatar: {
+    backgroundColor: "#788DFF"
+  },
+  icon: {
+    fontSize: "2rem"
   }
 })
 
@@ -61,20 +75,23 @@ export default function Home(props) {
         {
           show ? <Placeholder />
                : <>
-                  <Paper>
+                  <Paper elevation={4} className={classes.paper}>
                     {
                       data.map(routine => {
                         const { id, from, to, action } = routine
 
                         return (
-                          <div key={id}>
-                            <div className="d-flex">
-                              <h4>{from}</h4>
-                              <h4>&ndash;</h4>
-                              <h4>{to}</h4>
+                          <div key={id} className="mb-4">
+                            <div className="d-flex align-items-center">
+                              <Avatar className="mr-2" classes={{ root: classes.avatar }}>
+                                <Schedule className={classes.icon} />
+                              </Avatar>
+                              <h5>{from}</h5>
+                              <h5 className="mx-2">to</h5>
+                              <h5>{to}</h5>
                             </div>
 
-                            <h3>{action}</h3>
+                            <h4 className={classes.action}>{action}</h4>
                           </div>
                         )
                       })
