@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField,
-         Grow, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+         Grow, Button, createMuiTheme } from '@material-ui/core';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import { KeyboardTimePicker, MuiPickersUtilsProvider } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
 
@@ -14,6 +14,45 @@ const useStyles = makeStyles({
     textTransform: "lowercase",
     fontSize: "18px",
     borderRadius: "0.5rem"
+  }
+})
+
+const customTimeTheme = createMuiTheme({
+  overrides: {
+    MuiPaper: {
+      rounded: {
+        borderRadius: "1rem"
+      }
+    },
+    MuiPickersToolbar: {
+      toolbar: {
+        backgroundColor: "#788DFF"
+      }
+    },
+    MuiButton: {
+      textPrimary: {
+        color: "#4F5DFF",
+        textTransform: "lowercase",
+        fontSize: "16px",
+        borderRadius: "0.5rem"
+      }
+    },
+    MuiPickersClock: {
+      pin: {
+        backgroundColor: "#4F5DFF"
+      }
+    },
+    MuiPickersClockPointer: {
+      pointer: {
+        backgroundColor: "#4F5DFF"
+      },
+      thumb: {
+        border: "14px solid #4F5DFF"
+      },
+      noPoint: {
+        backgroundColor: "#4F5DFF"
+      }
+    }
   }
 })
 
@@ -62,12 +101,14 @@ export default function New(props) {
 
             <div className="mb-2">
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                <ThemeProvider theme={customTimeTheme}>
 
-                <KeyboardTimePicker label="From" placeholder="3:00 PM" mask="__:__ _M"
-                 value={from} onChange={date => setFrom(date)} required InputLabelProps={{ required: false }} />
-                <KeyboardTimePicker label="To" placeholder="6:00 PM" mask="__:__ _M"
-                 value={to} onChange={date => setTo(date)} required InputLabelProps={{ required: false }} />
+                  <KeyboardTimePicker label="From" placeholder="3:00 PM" mask="__:__ _M"
+                  value={from} onChange={date => setFrom(date)} required InputLabelProps={{ required: false }} />
+                  <KeyboardTimePicker label="To" placeholder="6:00 PM" mask="__:__ _M"
+                  value={to} onChange={date => setTo(date)} required InputLabelProps={{ required: false }} />
 
+                </ThemeProvider>
               </MuiPickersUtilsProvider>
             </div>
 
