@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Paper } from '@material-ui/core';
+import { Avatar, Divider, Paper } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { Schedule } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -81,18 +81,22 @@ export default function Home(props) {
                         const { id, from, to, action } = routine
 
                         return (
-                          <div key={id} className="mb-4">
-                            <div className="d-flex align-items-center">
-                              <Avatar className="mr-2" classes={{ root: classes.avatar }}>
-                                <Schedule className={classes.icon} />
-                              </Avatar>
-                              <h5>{from}</h5>
-                              <h5 className="mx-2">to</h5>
-                              <h5>{to}</h5>
+                          <>
+                            <div key={id} className="my-4">
+                              <div className="d-flex align-items-center">
+                                <Avatar className="mr-2" classes={{ root: classes.avatar }}>
+                                  <Schedule className={classes.icon} />
+                                </Avatar>
+                                <h5>{from}</h5>
+                                <h5 className="mx-2">to</h5>
+                                <h5>{to}</h5>
+                              </div>
+
+                              <h4 className={classes.action}>{action}</h4>
                             </div>
 
-                            <h4 className={classes.action}>{action}</h4>
-                          </div>
+                            <Divider variant="middle" light />
+                          </>
                         )
                       })
                     }
