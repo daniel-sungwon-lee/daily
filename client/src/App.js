@@ -12,9 +12,14 @@ function App() {
     <div className="App">
       <Router>
 
-        <Progress />
+        <>
+         {
+           loading ? <Progress />
+                   : <></>
+         }
+        </>
 
-        <Nav loading={loading} setLoading={setLoading} />
+        <Nav />
 
         <Switch>
 
