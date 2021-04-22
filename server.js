@@ -67,7 +67,7 @@ app.get('/api/routines', (req, res, next) => {
 
   const sql= `
   select * from "routines"
-  order by "from" desc
+  order by "id"
   `;
 
   db.query(sql)
