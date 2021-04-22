@@ -1,6 +1,9 @@
 * {
   font-family: Circular !important;
 }
+html {
+  scroll-behavior: smooth;
+}
 .App {
   text-align: center;
 }
