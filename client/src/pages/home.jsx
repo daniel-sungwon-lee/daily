@@ -95,7 +95,13 @@ export default function Home(props) {
                               <h4 className={classes.action}>{action}</h4>
                             </div>
 
-                            <Divider variant="middle" light />
+                            <>
+                             {
+                               data.indexOf(routine) === data.length -1 ? <></>
+                                                                        : <Divider variant="middle" light />
+                             }
+                            </>
+
                           </>
                         )
                       })
