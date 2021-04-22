@@ -14,7 +14,8 @@ const useStyles = makeStyles({
     borderRadius: "1rem"
   },
   action: {
-    color: "#4F5DFF"
+    color: "#4F5DFF",
+    margin: "0.5rem 0"
   },
   avatar: {
     backgroundColor: "#788DFF"
@@ -82,17 +83,22 @@ export default function Home(props) {
 
                         return (
                           <>
-                            <div key={id} className="my-4">
+                            <div key={id} className="mt-4 mb-5">
+
                               <div className="d-flex align-items-center">
+
                                 <Avatar className="mr-2" classes={{ root: classes.avatar }}>
                                   <Schedule className={classes.icon} />
                                 </Avatar>
+
                                 <h5>{from}</h5>
                                 <h5 className="mx-2">to</h5>
                                 <h5>{to}</h5>
+
                               </div>
 
                               <h4 className={classes.action}>{action}</h4>
+
                             </div>
 
                             <>
