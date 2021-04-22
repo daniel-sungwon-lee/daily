@@ -15,7 +15,8 @@ const useStyles = makeStyles({
   },
   action: {
     color: "#4F5DFF",
-    margin: "0.5rem 0"
+    margin: "0.5rem 0",
+    width: "50%"
   },
   avatar: {
     backgroundColor: "#788DFF"
@@ -97,7 +98,9 @@ export default function Home(props) {
 
                               </div>
 
-                              <h4 className={classes.action}>{action}</h4>
+                              <div className="d-flex justify-content-center">
+                                <h4 className={classes.action}>{action}</h4>
+                              </div>
 
                             </div>
 
