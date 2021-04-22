@@ -26,7 +26,7 @@ export default function Nav(props) {
 
   return (
     <Fade in>
-      <div className="mb-5">
+      <div className="mb-5 sticky-top">
         <AppBar position="sticky" classes={{root: classes.nav}}>
           <Toolbar className="justify-content-between">
 
