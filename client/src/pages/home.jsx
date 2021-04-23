@@ -16,7 +16,9 @@ const useStyles = makeStyles({
   action: {
     color: "#4F5DFF",
     margin: "0.5rem 0",
-    width: "50%"
+    width: "50%",
+    wordWrap: "break-word",
+    wordBreak: "break-word"
   },
   avatar: {
     backgroundColor: "#788DFF"
@@ -83,8 +85,8 @@ export default function Home(props) {
                         const { id, from, to, action } = routine
 
                         return (
-                          <>
-                            <div key={id} className="mt-4 mb-5">
+                          <div key={id}>
+                            <div className="mt-4 mb-5">
 
                               <div className="d-flex align-items-center">
 
@@ -111,7 +113,7 @@ export default function Home(props) {
                              }
                             </>
 
-                          </>
+                          </div>
                         )
                       })
                     }
