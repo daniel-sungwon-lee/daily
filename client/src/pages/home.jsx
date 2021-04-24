@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Divider, IconButton, Paper } from '@material-ui/core';
+import { Avatar, Divider, IconButton, Menu, MenuItem, Paper } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { MoreVertRounded, Schedule } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Placeholder from '../components/placeholder';
 
 const useStyles = makeStyles({
@@ -26,6 +27,9 @@ const useStyles = makeStyles({
   },
   icon: {
     fontSize: "2rem"
+  },
+  menu: {
+    borderRadius: "2rem"
   }
 })
 
@@ -102,9 +106,30 @@ export default function Home(props) {
                                 </div>
 
                                 <div>
-                                  <IconButton>
-                                    <MoreVertRounded />
-                                  </IconButton>
+                                  <PopupState id="menu" variant="popover">
+                                    {
+                                      popupState => (
+                                        <>
+                                          <IconButton {...bindTrigger(popupState)}>
+                                            <MoreVertRounded />
+                                          </IconButton>
+
+                                          <Menu {...bindMenu(popupState)} classes={{
+                                            paper: classes.menu }}
+                                            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                                            getContentAnchorEl={null}
+                                            >
+                                            <MenuItem>
+                                              <div className="p-2">
+                                                edit
+                                              </div>
+                                            </MenuItem>
+                                          </Menu>
+                                        </>
+                                      )
+                                    }
+                                  </PopupState>
                                 </div>
 
                               </div>
