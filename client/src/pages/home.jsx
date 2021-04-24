@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Divider, Paper } from '@material-ui/core';
+import { Avatar, Divider, IconButton, Paper } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
-import { Schedule } from '@material-ui/icons';
+import { MoreVertRounded, Schedule } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
 
@@ -21,7 +21,8 @@ const useStyles = makeStyles({
     wordBreak: "break-word"
   },
   avatar: {
-    backgroundColor: "#788DFF"
+    backgroundColor: "#788DFF",
+    marginRight: "0.75rem"
   },
   icon: {
     fontSize: "2rem"
@@ -88,15 +89,23 @@ export default function Home(props) {
                           <div key={id}>
                             <div className="mt-4 mb-5">
 
-                              <div className="d-flex align-items-center">
+                              <div className="d-flex align-items-center justify-content-between">
 
-                                <Avatar className="mr-2" classes={{ root: classes.avatar }}>
-                                  <Schedule className={classes.icon} />
-                                </Avatar>
+                                <div className="d-flex align-items-center">
+                                  <Avatar classes={{ root: classes.avatar }}>
+                                    <Schedule className={classes.icon} />
+                                  </Avatar>
 
-                                <h5>{from}</h5>
-                                <h5 className="mx-2">to</h5>
-                                <h5>{to}</h5>
+                                  <h5>{from}</h5>
+                                  <h5 className="mx-2">to</h5>
+                                  <h5>{to}</h5>
+                                </div>
+
+                                <div>
+                                  <IconButton>
+                                    <MoreVertRounded />
+                                  </IconButton>
+                                </div>
 
                               </div>
 
