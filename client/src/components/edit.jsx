@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogActions, TextField,
          Grow, Button, createMuiTheme } from '@material-ui/core';
 import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
@@ -62,6 +62,18 @@ export default function Edit(props) {
   const [newFrom, setFrom] = useState(null)
   const [newTo, setTo] = useState(null)
   const [newAction, setAction] = useState('')
+
+  useEffect(() => {
+    fetch(`/api/routines/${id}`)
+      .then(res => res.json())
+      .then(data => {
+        const { from, to, action } = data
+
+        setFrom(from)
+        setTo(to)
+        setAction(action)
+      })
+  }, [id])
 
   const handleClose = () => {
     setAction('')
