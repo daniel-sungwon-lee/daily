@@ -59,9 +59,9 @@ const customTimeTheme = createMuiTheme({
 export default function Edit(props) {
   const classes = useStyles();
   const { open, setOpen, id } = props;
-  const [from, setFrom] = useState('')
-  const [to, setTo] = useState('')
-  const [action, setAction] = useState('')
+  const [newFrom, setFrom] = useState(null)
+  const [newTo, setTo] = useState(null)
+  const [newAction, setAction] = useState('')
 
   const handleClose = () => {
     setAction('')
@@ -71,9 +71,9 @@ export default function Edit(props) {
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    const fromTime = from.toLocaleTimeString([], { timeStyle: "short" })
-    const toTime = to.toLocaleTimeString([], { timeStyle: "short" })
-    const reqBody = { from: fromTime, to: toTime, action }
+    const fromTime = newFrom.toLocaleTimeString([], { timeStyle: "short" })
+    const toTime = newTo.toLocaleTimeString([], { timeStyle: "short" })
+    const reqBody = { from: fromTime, to: toTime, newAction }
 
     fetch(`/api/routines/${id}`, {
       method: "PATCH",
@@ -104,16 +104,16 @@ export default function Edit(props) {
                 <ThemeProvider theme={customTimeTheme}>
 
                   <KeyboardTimePicker label="From" placeholder="3:00 PM" mask="__:__ _M"
-                    value={from} onChange={date => setFrom(date)} required InputLabelProps={{ required: false }} />
+                    value={newFrom} onChange={date => setFrom(date)} required InputLabelProps={{ required: false }} />
                   <KeyboardTimePicker label="To" placeholder="6:00 PM" mask="__:__ _M"
-                    value={to} onChange={date => setTo(date)} required InputLabelProps={{ required: false }} />
+                    value={newTo} onChange={date => setTo(date)} required InputLabelProps={{ required: false }} />
 
                 </ThemeProvider>
               </MuiPickersUtilsProvider>
             </div>
 
             <TextField multiline label="Action" helperText="Ex: Code" color="secondary"
-              value={action} onChange={(e) => setAction(e.target.value)} required InputLabelProps={{ required: false }} />
+              value={newAction} onChange={(e) => setAction(e.target.value)} required InputLabelProps={{ required: false }} />
 
           </DialogContent>
 
