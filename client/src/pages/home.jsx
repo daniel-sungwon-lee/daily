@@ -43,6 +43,7 @@ export default function Home(props) {
   const [show, setShow] = useState(true)
   const [data, setData] = useState([])
   const [open, setOpen] = useState(false)
+  const [editId, setEditId] = useState(null)
 
   useEffect(() => {
     let currentDate = new Date()
@@ -68,6 +69,12 @@ export default function Home(props) {
   setInterval(() => {
     setTime(new Date().toLocaleTimeString())
   }, 1000)
+
+  const handleEdit = (popupState, id) => {
+    popupState.close()
+    setOpen(true)
+    setEditId(id)
+  }
 
   return (
     <div className="container" style={{ paddingBottom: "6rem" }}>
@@ -122,14 +129,12 @@ export default function Home(props) {
                                             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                                             getContentAnchorEl={null}
                                             >
-                                            <MenuItem onClick={popupState.close}>
-                                              <div className="p-2" onClick={() => setOpen(true)}>
+                                            <MenuItem onClick={() => handleEdit(popupState, id)}>
+                                              <div className="p-2">
                                                 edit
                                               </div>
                                             </MenuItem>
                                           </Menu>
-
-                                          <Edit open={open} setOpen={setOpen} id={id} />
                                         </>
                                       )
                                     }
@@ -156,6 +161,9 @@ export default function Home(props) {
                       })
                     }
                   </Paper>
+
+                  <Edit open={open} setOpen={setOpen} id={editId} />
+
                  </>
         }
       </div>
