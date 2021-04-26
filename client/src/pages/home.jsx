@@ -5,6 +5,7 @@ import { MoreVertRounded, Schedule } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Placeholder from '../components/placeholder';
+import Edit from '../components/edit';
 
 const useStyles = makeStyles({
   skeleton: {
@@ -41,6 +42,7 @@ export default function Home(props) {
   const [time, setTime] = useState('')
   const [show, setShow] = useState(true)
   const [data, setData] = useState([])
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     let currentDate = new Date()
@@ -120,12 +122,14 @@ export default function Home(props) {
                                             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                                             getContentAnchorEl={null}
                                             >
-                                            <MenuItem>
-                                              <div className="p-2">
+                                            <MenuItem onClick={popupState.close}>
+                                              <div className="p-2" onClick={() => setOpen(true)}>
                                                 edit
                                               </div>
                                             </MenuItem>
                                           </Menu>
+
+                                          <Edit open={open} setOpen={setOpen} id={id} />
                                         </>
                                       )
                                     }
