@@ -44,6 +44,7 @@ export default function Home(props) {
   const [data, setData] = useState([])
   const [open, setOpen] = useState(false)
   const [editId, setEditId] = useState(null)
+  const [empty, setEmpty] = useState('')
 
   useEffect(() => {
     let currentDate = new Date()
@@ -56,6 +57,10 @@ export default function Home(props) {
     fetch('/api/routines')
       .then(res => res.json())
       .then(data => {
+        if(data.length > 0) {
+          setEmpty('d-none')
+        }
+
         setShow(false)
         setData(data)
       })
@@ -94,9 +99,20 @@ export default function Home(props) {
           show ? <Placeholder />
                : <>
                   <Paper elevation={4} className={classes.paper}>
+
+                    <div className={empty} style={{ opacity: "0.5" }}>
+                      <h4>much empty...</h4>
+                    </div>
+
                     {
                       data.map(routine => {
                         const { id, from, to, action } = routine
+
+                        const fromDate = new Date(`March 03 2033 ${from}`)
+                        const toDate = new Date(`March 03 2033 ${to}`)
+
+                        const fromTime = fromDate.toLocaleTimeString([], { timeStyle: "short" })
+                        const toTime = toDate.toLocaleTimeString([], { timeStyle: "short" })
 
                         return (
                           <div key={id}>
@@ -109,9 +125,9 @@ export default function Home(props) {
                                     <Schedule className={classes.icon} />
                                   </Avatar>
 
-                                  <h5>{from}</h5>
+                                  <h5>{fromTime}</h5>
                                   <h5 className="mx-2">to</h5>
-                                  <h5>{to}</h5>
+                                  <h5>{toTime}</h5>
                                 </div>
 
                                 <div>
