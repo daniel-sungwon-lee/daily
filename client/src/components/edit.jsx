@@ -69,8 +69,11 @@ export default function Edit(props) {
       .then(data => {
         const { from, to, action } = data
 
-        setFrom(from)
-        setTo(to)
+        const fromDate = new Date(`March 03 2033 ${from}`)
+        const toDate = new Date(`March 03 2033 ${to}`)
+
+        setFrom(fromDate)
+        setTo(toDate)
         setAction(action)
       })
   }, [id])
