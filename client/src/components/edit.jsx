@@ -79,7 +79,6 @@ export default function Edit(props) {
   }, [id])
 
   const handleClose = () => {
-    setAction('')
     setOpen(false)
   }
 
@@ -96,7 +95,6 @@ export default function Edit(props) {
       body: JSON.stringify(reqBody)
     })
       .then(() => {
-        setAction('')
         setOpen(false)
       })
       .catch(() => window.location.reload())
