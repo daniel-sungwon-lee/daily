@@ -30,7 +30,7 @@ const useStyles = makeStyles({
     fontSize: "2rem"
   },
   menu: {
-    borderRadius: "2rem"
+    borderRadius: "1rem"
   }
 })
 
@@ -145,11 +145,19 @@ export default function Home(props) {
                                             transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                                             getContentAnchorEl={null}
                                             >
+
                                             <MenuItem onClick={() => handleEdit(popupState, id)}>
                                               <div className="p-2">
                                                 edit
                                               </div>
                                             </MenuItem>
+
+                                            <MenuItem onClick={popupState.close}>
+                                              <div className="p-2">
+                                                delete
+                                              </div>
+                                            </MenuItem>
+
                                           </Menu>
                                         </>
                                       )
