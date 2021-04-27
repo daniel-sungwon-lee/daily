@@ -90,6 +90,26 @@ app.get('/api/routines/:id', (req, res, next) => {
     .catch(err => next(err));
 })
 
+app.patch('/api/routines/:id', (req, res, next) => {
+  const { id } = req.params
+  const { from, to, action } = req.body
+
+  const sql = `
+  update "routines"
+  set "from" = $2,
+      "to" = $3,
+      "action" = $4
+  where "id" = $1
+  `
+  const params = [id, from, to, action]
+
+  db.query(sql, params)
+    .then(result => {
+      res.status(200).json(result.rows[0])
+    })
+    .catch(err => next(err))
+})
+
 //for Heroku deployment
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
