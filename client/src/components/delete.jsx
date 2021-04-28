@@ -19,6 +19,15 @@ export default function Delete(props) {
   const { open, setOpen, id } = props;
   const classes = useStyles();
 
+  const handleDelete = () => {
+    fetch(`/api/routines/${id}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }
+    })
+      .then(() => setOpen(false))
+      .catch(() => window.location.reload())
+  }
+
   return (
     <Dialog open={open} onClose={() => setOpen(false)} scroll="body"
      TransitionComponent={Grow} classes={{ paper: classes.dialog }}>
@@ -35,7 +44,8 @@ export default function Delete(props) {
             no
           </Button>
 
-          <Button classes={{ text: classes.button }} style={{ color: "#4F5DFF" }}>
+          <Button classes={{ text: classes.button }} style={{ color: "#4F5DFF" }}
+           onClick={handleDelete}>
             yes
           </Button>
 
