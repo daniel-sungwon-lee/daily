@@ -156,13 +156,13 @@ export default function Home(props) {
                                             >
 
                                             <MenuItem onClick={() => handleEdit(popupState, id)}>
-                                              <div className="p-2">
+                                              <div className="p-2" style={{ color: "#4F5DFF" }}>
                                                 edit
                                               </div>
                                             </MenuItem>
 
                                             <MenuItem onClick={() => handleDelete(popupState, id)}>
-                                              <div className="p-2">
+                                              <div className="p-2" style={{ color: "#f50057" }}>
                                                 delete
                                               </div>
                                             </MenuItem>

@@ -39,12 +39,12 @@ export default function Delete(props) {
 
          <DialogActions>
 
-          <Button color="secondary" classes={{ text: classes.button }}
+          <Button classes={{ text: classes.button }} style={{ color: "#4F5DFF" }}
            onClick={() => setOpen(false)}>
             no
           </Button>
 
-          <Button classes={{ text: classes.button }} style={{ color: "#4F5DFF" }}
+          <Button classes={{ text: classes.button }} color="secondary"
            onClick={handleDelete}>
             yes
           </Button>
