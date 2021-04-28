@@ -6,6 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Placeholder from '../components/placeholder';
 import Edit from '../components/edit';
+import Delete from '../components/delete';
 
 const useStyles = makeStyles({
   skeleton: {
@@ -45,6 +46,8 @@ export default function Home(props) {
   const [open, setOpen] = useState(false)
   const [editId, setEditId] = useState(null)
   const [empty, setEmpty] = useState('')
+  const [del, setDel] = useState(false)
+  const [delId, setDelId] = useState(null)
 
   useEffect(() => {
     let currentDate = new Date()
@@ -79,6 +82,12 @@ export default function Home(props) {
     popupState.close()
     setOpen(true)
     setEditId(id)
+  }
+
+  const handleDelete = (popupState, id) => {
+    popupState.close()
+    setDel(true)
+    setDelId(id)
   }
 
   return (
@@ -152,7 +161,7 @@ export default function Home(props) {
                                               </div>
                                             </MenuItem>
 
-                                            <MenuItem onClick={popupState.close}>
+                                            <MenuItem onClick={() => handleDelete(popupState, id)}>
                                               <div className="p-2">
                                                 delete
                                               </div>
@@ -187,6 +196,8 @@ export default function Home(props) {
                   </Paper>
 
                   <Edit open={open} setOpen={setOpen} id={editId} />
+
+                  <Delete open={del} setOpen={setDel} id={delId} />
 
                  </>
         }
