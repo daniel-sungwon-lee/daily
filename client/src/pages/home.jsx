@@ -123,6 +123,13 @@ export default function Home(props) {
                         const fromTime = fromDate.toLocaleTimeString([], { timeStyle: "short" })
                         const toTime = toDate.toLocaleTimeString([], { timeStyle: "short" })
 
+                        const time = new Date().toLocaleTimeString()
+                        const fromTimeSec = fromDate.toLocaleTimeString()
+
+                        if (time === fromTimeSec) {
+
+                        }
+
                         return (
                           <div key={id}>
                             <div className="mt-4 mb-5">
