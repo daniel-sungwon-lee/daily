@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Divider, IconButton, Menu, MenuItem, Paper } from '@material-ui/core';
+import { Avatar, Divider, Grow, IconButton, Menu, MenuItem, Paper } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { MoreVertRounded, Schedule } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
@@ -107,6 +107,7 @@ export default function Home(props) {
         {
           show ? <Placeholder />
                : <>
+                  <Grow in>
                   <Paper elevation={4} className={classes.paper}>
 
                     <div className={empty} style={{ opacity: "0.5" }}>
@@ -201,6 +202,7 @@ export default function Home(props) {
                       })
                     }
                   </Paper>
+                  </Grow>
 
                   <Edit open={open} setOpen={setOpen} id={editId} />
 

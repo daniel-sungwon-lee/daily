@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/nav';
 import Progress from './components/progress';
 import Home from './pages/home';
+import Auth from './pages/auth';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -22,6 +23,10 @@ function App() {
         <Nav />
 
         <Switch>
+
+        <Route exact path="/auth">
+          <Auth />
+        </Route>
 
         <Route exact path="/">
           <Home loading={loading} setLoading={setLoading} />
