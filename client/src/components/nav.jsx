@@ -60,6 +60,10 @@ export default function Nav(props) {
                 top
               </a>
 
+              <p className="mx-4 my-0 nav-p" onClick={handleSignOut}>
+                logout
+              </p>
+
             </div>
 
           </Toolbar>
