@@ -14,6 +14,7 @@ const useStyles = makeStyles({
 })
 
 export default function Nav(props) {
+  const { user, handleSignOut } = props;
   const classes = useStyles()
   const [info, setInfo] = useState(false)
   const [anchor, setAnchor] = useState(null)
@@ -41,7 +42,7 @@ export default function Nav(props) {
               <p className="mr-2 my-0 nav-p" onClick={() => setOpen(true)}>
                 new
               </p>
-              <New open={open} setOpen={setOpen} />
+              <New open={open} setOpen={setOpen} user={user} />
 
               <p className="mx-4 my-0 nav-p" onClick={handleInfo}>
                 info
