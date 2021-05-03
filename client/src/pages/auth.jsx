@@ -87,6 +87,11 @@ export default function Auth(props) {
       .catch(() => window.location.reload())
   }
 
+  const handleAutofill = () => {
+    setEmail("demo@User")
+    setPassword("somethingHard!")
+  }
+
   if(page === 'login') {
     return (
       <>
@@ -94,13 +99,13 @@ export default function Auth(props) {
           <div className="container">
 
             <div className="m-3">
-              <img src="/images/daily.svg" alt="LightBlb logo" width="200" />
+              <img src="/images/daily.svg" alt="LightBlb logo" width="200" title="Daily" />
             </div>
 
-            <form className="d-flex flex-column align-items-center" onSubmit={handleLogin}>
+            <form className="d-flex flex-column align-items-center mb-1" onSubmit={handleLogin}>
 
               <TextField id="email" label="Email" required InputLabelProps={{ required: false }}
-                type="email" value={email} className="mb-4" onChange={handleChange} error={error}
+                type="email" value={email} className="mb-2" onChange={handleChange} error={error}
                 color="secondary" />
 
               <TextField id="password" label="Password" required InputLabelProps={{ required: false }}
@@ -113,6 +118,14 @@ export default function Auth(props) {
               </Button>
 
             </form>
+
+            <Button classes={{ text: classes.button }} onClick={handleSwitch} className="mr-3">
+              sign up
+            </Button>
+
+            <Button classes={{ text: classes.button }} className="ml-3" onClick={handleAutofill}>
+              demo
+            </Button>
 
           </div>
         </Grow>
