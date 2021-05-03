@@ -102,14 +102,15 @@ app.post('/api/login', (req, res, next) => {
 });
 
 //add new
-app.post('/api/routines', (req, res, next) => {
+app.post('/api/routines/:userId', (req, res, next) => {
+  const { userId } = req.params
   const { from, to, action } = req.body;
 
   const sql = `
-  insert into "routines" ("from", "to", "action")
-  values ($1, $2, $3)
+  insert into "routines" ("userId", "from", "to", "action")
+  values ($1, $2, $3, $4)
   `;
-  const params = [from, to, action]
+  const params = [userId, from, to, action]
 
   db.query(sql, params)
     .then(result => {
@@ -119,35 +120,39 @@ app.post('/api/routines', (req, res, next) => {
 })
 
 //home
-app.get('/api/routines', (req, res, next) => {
+app.get('/api/routines/:userId', (req, res, next) => {
+  const { userId } = req.params
 
   const sql= `
   select * from "routines"
+  where "userId" = $1
   order by "from"
   `;
+  const params = [userId]
 
-  db.query(sql)
+  db.query(sql, params)
     .then(result => res.status(200).json(result.rows))
     .catch(err => next(err));
 })
 
 //edit
-app.get('/api/routines/:id', (req, res, next) => {
-  const { id } = req.params
+app.get('/api/routines/:userId/:id', (req, res, next) => {
+  const { userId, id } = req.params
 
   const sql = `
   select * from "routines"
-  where "id" = $1
+  where "userId" = $1
+  and "id" = $2
   `;
-  const params = [id]
+  const params = [userId, id]
 
   db.query(sql, params)
     .then(result => res.status(200).json(result.rows[0]))
     .catch(err => next(err));
 })
 
-app.patch('/api/routines/:id', (req, res, next) => {
-  const { id } = req.params
+app.patch('/api/routines/:userId/:id', (req, res, next) => {
+  const { userId, id } = req.params
   const { from, to, action } = req.body
 
   const sql = `
@@ -155,9 +160,10 @@ app.patch('/api/routines/:id', (req, res, next) => {
   set "from" = $2,
       "to" = $3,
       "action" = $4
-  where "id" = $1
+  where "userId" = $1
+  and "id" =$2
   `
-  const params = [id, from, to, action]
+  const params = [userId, id, from, to, action]
 
   db.query(sql, params)
     .then(result => {
@@ -167,14 +173,15 @@ app.patch('/api/routines/:id', (req, res, next) => {
 })
 
 //delete
-app.delete('/api/routines/:id', (req, res, next) => {
-  const { id } = req.params
+app.delete('/api/routines/:userId/:id', (req, res, next) => {
+  const { userId, id } = req.params
 
   const sql = `
   delete from "routines"
-  where "id" = $1
+  where "userId" = $1
+  and "id" = $2
   `
-  const params = [id]
+  const params = [userId, id]
 
   db.query(sql, params)
     .then(result => {
