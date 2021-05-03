@@ -99,7 +99,7 @@ export default function Auth(props) {
           <div className="container">
 
             <div className="m-3">
-              <img src="/images/daily.svg" alt="LightBlb logo" width="200" title="Daily" />
+              <img src="/images/daily.svg" alt="Daily logo" width="200" title="Daily" />
             </div>
 
             <form className="d-flex flex-column align-items-center mb-1" onSubmit={handleLogin}>
@@ -134,8 +134,31 @@ export default function Auth(props) {
   } else {
     return (
       <>
-        <Grow>
+        <Grow in>
           <div className="container">
+
+            <div className="m-3">
+              <img src="/images/daily.svg" alt="Daily logo" width="200" />
+            </div>
+
+            <form className="d-flex flex-column align-items-center mb-1" onSubmit={handleSignUp}>
+
+              <TextField id="email" label="Email" required InputLabelProps={{ required: false }}
+                type="email" value={email} className="mb-2" onChange={handleChange} color="secondary" />
+
+              <TextField id="password" label="Password" required InputLabelProps={{ required: false }}
+                type="password" value={password} className="mb-4" onChange={handleChange} color="secondary" />
+
+              <Button className="mt-2" type="submit" classes={{ text: classes.button }}
+               style={{ color: "#4F5DFF" }}>
+                sign up
+              </Button>
+
+            </form>
+
+            <Button onClick={handleSwitch} classes={{ text: classes.button }}>
+              login
+            </Button>
 
           </div>
         </Grow>
