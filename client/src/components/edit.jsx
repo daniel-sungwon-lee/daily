@@ -58,13 +58,13 @@ const customTimeTheme = createMuiTheme({
 
 export default function Edit(props) {
   const classes = useStyles();
-  const { open, setOpen, id } = props;
+  const { open, setOpen, id, userId } = props;
   const [newFrom, setFrom] = useState(null)
   const [newTo, setTo] = useState(null)
   const [newAction, setAction] = useState('')
 
   useEffect(() => {
-    fetch(`/api/routines/${id}`)
+    fetch(`/api/routines/${userId}/${id}`)
       .then(res => res.json())
       .then(data => {
         const { from, to, action } = data
@@ -76,7 +76,7 @@ export default function Edit(props) {
         setTo(toDate)
         setAction(action)
       })
-  }, [id])
+  }, [id, userId])
 
   const handleClose = () => {
     setOpen(false)
@@ -89,7 +89,7 @@ export default function Edit(props) {
     const toTime = newTo.toLocaleTimeString([], { timeStyle: "short" })
     const reqBody = { from: fromTime, to: toTime, action: newAction }
 
-    fetch(`/api/routines/${id}`, {
+    fetch(`/api/routines/${userId}/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reqBody)

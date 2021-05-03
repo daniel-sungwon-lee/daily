@@ -37,6 +37,7 @@ const useStyles = makeStyles({
 
 export default function Home(props) {
   const { loading, setLoading } = props;
+  const { userId } = props.user;
 
   const classes = useStyles()
   const [date, setDate] = useState('')
@@ -57,7 +58,7 @@ export default function Home(props) {
 
     setTime(currentDate.toLocaleTimeString())
 
-    fetch('/api/routines')
+    fetch(`/api/routines/${userId}`)
       .then(res => res.json())
       .then(data => {
         if(data.length > 0) {
@@ -72,7 +73,7 @@ export default function Home(props) {
     if(date && time !== '') {
       setLoading(false)
     }
-  }, [date, setLoading, time])
+  }, [date, setLoading, time, userId])
 
   setInterval(() => {
     setTime(new Date().toLocaleTimeString())
@@ -204,9 +205,9 @@ export default function Home(props) {
                   </Paper>
                   </Grow>
 
-                  <Edit open={open} setOpen={setOpen} id={editId} />
+                  <Edit open={open} setOpen={setOpen} id={editId} userId={userId} />
 
-                  <Delete open={del} setOpen={setDel} id={delId} />
+                  <Delete open={del} setOpen={setDel} id={delId} userId={userId} />
 
                  </>
         }

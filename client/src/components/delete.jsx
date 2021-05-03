@@ -16,11 +16,11 @@ const useStyles = makeStyles({
 })
 
 export default function Delete(props) {
-  const { open, setOpen, id } = props;
+  const { open, setOpen, id, userId } = props;
   const classes = useStyles();
 
   const handleDelete = () => {
-    fetch(`/api/routines/${id}`, {
+    fetch(`/api/routines/${userId}/${id}`, {
       method: "DELETE",
       headers: { "Content-Type": "application/json" }
     })

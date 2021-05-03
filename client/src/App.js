@@ -58,7 +58,7 @@ function App() {
          }
         </>
 
-        <Nav handleSignOut={handleSignOut} />
+        <Nav handleSignOut={handleSignOut} user={user} />
 
         <Switch>
 
@@ -67,7 +67,8 @@ function App() {
         </Route>
 
         <Route exact path="/">
-          <Home loading={loading} setLoading={setLoading} />
+          <Home loading={loading} setLoading={setLoading}
+           user={user} />
         </Route>
 
         </Switch>

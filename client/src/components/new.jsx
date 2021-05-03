@@ -59,6 +59,7 @@ const customTimeTheme = createMuiTheme({
 export default function New(props) {
   const classes = useStyles();
   const { open, setOpen } = props;
+  const { userId } = props.user;
   const [from, setFrom] = useState(new Date())
   const [to, setTo] = useState(new Date())
   const [action, setAction] = useState('')
@@ -75,7 +76,7 @@ export default function New(props) {
     const toTime = to.toLocaleTimeString([], { timeStyle: "short" })
     const reqBody = { from: fromTime, to: toTime, action }
 
-    fetch('/api/routines', {
+    fetch(`/api/routines/${userId}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(reqBody)
