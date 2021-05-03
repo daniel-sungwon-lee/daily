@@ -56,11 +56,7 @@ export default function Nav(props) {
                 </p>
               </Popover>
 
-              <a href="#top" className="text-decoration-none nav-p ml-2">
-                top
-              </a>
-
-              <p className="mx-4 my-0 nav-p" onClick={handleSignOut}>
+              <p className="ml-2 my-0 nav-p" onClick={handleSignOut}>
                 logout
               </p>
 

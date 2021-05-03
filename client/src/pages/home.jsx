@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Avatar, Divider, Grow, IconButton, Menu, MenuItem, Paper } from '@material-ui/core';
+import { Avatar, Divider, Grow, IconButton, Menu, MenuItem, Paper,
+         Fab } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
-import { MoreVertRounded, Schedule } from '@material-ui/icons';
+import { MoreVertRounded, Schedule, KeyboardArrowUpRounded } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Placeholder from '../components/placeholder';
 import Edit from '../components/edit';
 import Delete from '../components/delete';
+import ScrollTop from '../components/top';
 
 const useStyles = makeStyles({
   skeleton: {
@@ -128,6 +130,7 @@ export default function Home(props) {
                         const time = new Date().toLocaleTimeString()
                         const fromTimeSec = fromDate.toLocaleTimeString()
 
+                        //to be added...
                         if (time === fromTimeSec) {
 
                         }
@@ -212,6 +215,14 @@ export default function Home(props) {
                  </>
         }
       </div>
+
+      <ScrollTop {...props}>
+        <a href="#top">
+          <Fab color="secondary" size="large">
+            <KeyboardArrowUpRounded className={classes.icon} />
+          </Fab>
+        </a>
+      </ScrollTop>
 
     </div>
   )
