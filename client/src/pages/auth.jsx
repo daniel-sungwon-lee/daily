@@ -102,7 +102,11 @@ export default function Auth(props) {
               <img src="/images/daily.svg" alt="Daily logo" width="200" title="Daily" />
             </div>
 
-            <form className="d-flex flex-column align-items-center mb-1" onSubmit={handleLogin}>
+            <div className="mb-5 mt-4">
+              <h2>Login to your Daily account</h2>
+            </div>
+
+            <form className="d-flex flex-column align-items-center mb-4" onSubmit={handleLogin}>
 
               <TextField id="email" label="Email" required InputLabelProps={{ required: false }}
                 type="email" value={email} className="mb-2" onChange={handleChange} error={error}
@@ -119,13 +123,17 @@ export default function Auth(props) {
 
             </form>
 
-            <Button classes={{ text: classes.button }} onClick={handleSwitch} className="mr-3">
-              sign up
-            </Button>
+            <div>
+              <h4 style={{ color: "#F50057" }}>New user?</h4>
 
-            <Button classes={{ text: classes.button }} className="ml-3" onClick={handleAutofill}>
-              demo
-            </Button>
+              <Button classes={{ text: classes.button }} onClick={handleSwitch} className="mr-2">
+                sign up
+              </Button>
+
+              <Button classes={{ text: classes.button }} className="ml-2" onClick={handleAutofill}>
+                demo
+              </Button>
+            </div>
 
           </div>
         </Grow>
@@ -138,7 +146,11 @@ export default function Auth(props) {
           <div className="container">
 
             <div className="m-3">
-              <img src="/images/daily.svg" alt="Daily logo" width="200" />
+              <img src="/images/daily.svg" alt="Daily logo" width="200" title="Daily"/>
+            </div>
+
+            <div className="mb-5 mt-4">
+              <h2>Create a new Daily account</h2>
             </div>
 
             <form className="d-flex flex-column align-items-center mb-1" onSubmit={handleSignUp}>
@@ -157,7 +169,7 @@ export default function Auth(props) {
             </form>
 
             <Button onClick={handleSwitch} classes={{ text: classes.button }}>
-              login
+              back to login
             </Button>
 
           </div>
