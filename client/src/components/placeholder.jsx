@@ -7,7 +7,7 @@ const useStyles = makeStyles({
     borderRadius: "1rem"
   },
   size: {
-    padding: "15rem"
+    padding: "19rem"
   }
 })
 
