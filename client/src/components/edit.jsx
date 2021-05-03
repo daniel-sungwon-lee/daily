@@ -87,7 +87,7 @@ export default function Edit(props) {
 
     const fromTime = newFrom.toLocaleTimeString([], { timeStyle: "short" })
     const toTime = newTo.toLocaleTimeString([], { timeStyle: "short" })
-    const reqBody = { from: fromTime, to: toTime, action: newAction }
+    const reqBody = { from: fromTime, to: toTime, action: newAction, userId }
 
     fetch(`/api/routines/${userId}/${id}`, {
       method: "PATCH",
