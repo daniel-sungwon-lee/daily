@@ -109,7 +109,7 @@ export default function Auth(props) {
             <form className="d-flex flex-column align-items-center mb-4" onSubmit={handleLogin}>
 
               <TextField id="email" label="Email" required InputLabelProps={{ required: false }}
-                type="email" value={email} className="mb-2" onChange={handleChange} error={error}
+                type="email" value={email} className="mb-3" onChange={handleChange} error={error}
                 color="secondary" />
 
               <TextField id="password" label="Password" required InputLabelProps={{ required: false }}
@@ -156,7 +156,7 @@ export default function Auth(props) {
             <form className="d-flex flex-column align-items-center mb-1" onSubmit={handleSignUp}>
 
               <TextField id="email" label="Email" required InputLabelProps={{ required: false }}
-                type="email" value={email} className="mb-2" onChange={handleChange} color="secondary" />
+                type="email" value={email} className="mb-3" onChange={handleChange} color="secondary" />
 
               <TextField id="password" label="Password" required InputLabelProps={{ required: false }}
                 type="password" value={password} className="mb-4" onChange={handleChange} color="secondary" />
