@@ -10,7 +10,7 @@ CREATE TABLE "users" (
 
 CREATE TABLE "routines" (
 	"id" serial NOT NULL,
-	"userId" serial NOT NULL
+	"userId" serial NOT NULL,
 	"from" TIME NOT NULL,
 	"to" TIME NOT NULL,
 	"action" TEXT NOT NULL,
