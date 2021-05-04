@@ -5,3 +5,9 @@ During my job search, it was easy to loose track of time and stray from a struct
 
 ## Live Link
 https://dailyyy.herokuapp.com/
+
+## Preview
+![daily demo](https://user-images.githubusercontent.com/72715781/117080516-d7f2aa80-acf2-11eb-93e3-009bd1ed0e82.gif)
+
+## Database Schema
+https://dbdesigner.page.link/fwK1mojhppsjnLgE9
