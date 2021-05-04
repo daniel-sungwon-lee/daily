@@ -139,9 +139,9 @@ export default function Home(props) {
                           <div key={id}>
                             <div className="mt-4 mb-5">
 
-                              <div className="d-flex align-items-center justify-content-between">
+                              <div className="d-flex justify-content-between">
 
-                                <div className="d-flex align-items-center">
+                                <div className="d-flex mt-2">
                                   <Avatar classes={{ root: classes.avatar }}>
                                     <Schedule className={classes.icon} />
                                   </Avatar>
@@ -188,7 +188,7 @@ export default function Home(props) {
 
                               </div>
 
-                              <div className="d-flex justify-content-center">
+                              <div className="d-flex justify-content-center mt-4">
                                 <h4 className={classes.action}>{action}</h4>
                               </div>
 
