@@ -157,9 +157,9 @@ app.patch('/api/routines/:userId/:id', (req, res, next) => {
 
   const sql = `
   update "routines"
-  set "from" = $2,
-      "to" = $3,
-      "action" = $4
+  set "from" = $3,
+      "to" = $4,
+      "action" = $5
   where "userId" = $1
   and "id" =$2
   `

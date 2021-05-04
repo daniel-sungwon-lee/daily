@@ -74,7 +74,7 @@ export default function New(props) {
 
     const fromTime = from.toLocaleTimeString([], { timeStyle: "short" })
     const toTime = to.toLocaleTimeString([], { timeStyle: "short" })
-    const reqBody = { from: fromTime, to: toTime, action, userId }
+    const reqBody = { from: fromTime, to: toTime, action }
 
     fetch(`/api/routines/${userId}`, {
       method: "POST",
