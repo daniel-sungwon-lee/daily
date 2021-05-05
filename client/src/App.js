@@ -68,7 +68,8 @@ function App() {
         </Route>
 
         <Route exact path="/">
-          <SnackbarProvider maxSnack={1} preventDuplicate style={{ backgroundColor: "#4F5DFF" }}>
+          <SnackbarProvider maxSnack={1} preventDuplicate style={{
+            backgroundColor: "#4F5DFF", fontSize: "18px" }}>
 
             <Home loading={loading} setLoading={setLoading}
             user={user} />

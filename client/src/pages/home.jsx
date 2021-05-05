@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Avatar, Divider, Grow, IconButton, Menu, MenuItem, Paper,
          Fab } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
-import { MoreVertRounded, Schedule, KeyboardArrowUpRounded } from '@material-ui/icons';
+import { MoreVertRounded, Schedule, KeyboardArrowUpRounded, CloseRounded } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Placeholder from '../components/placeholder';
@@ -35,6 +35,9 @@ const useStyles = makeStyles({
   },
   menu: {
     borderRadius: "1rem"
+  },
+  closeIcon: {
+    color: "white"
   }
 })
 
@@ -52,7 +55,7 @@ export default function Home(props) {
   const [del, setDel] = useState(false)
   const [delId, setDelId] = useState(null)
   const classes = useStyles()
-  const { enqueueSnackbar } = useSnackbar()
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
   useEffect(() => {
     let currentDate = new Date()
@@ -132,9 +135,15 @@ export default function Home(props) {
                         const time = new Date().toLocaleTimeString()
                         const fromTimeSec = fromDate.toLocaleTimeString()
 
-                        //to be added...
                         if (time === fromTimeSec) {
-                          enqueueSnackbar(action, { persist: true })
+                          enqueueSnackbar(action, { persist: true, action: (
+
+                              <IconButton onClick={() => closeSnackbar()}
+                               className={classes.closeIcon}>
+                                 <CloseRounded />
+                              </IconButton>
+
+                          ) })
                         }
 
                         return (
