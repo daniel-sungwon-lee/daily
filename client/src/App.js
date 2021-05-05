@@ -6,6 +6,7 @@ import Progress from './components/progress';
 import Home from './pages/home';
 import Auth from './pages/auth';
 import decodeToken from './decodeToken';
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   const [loading, setLoading] = useState(true)
@@ -67,8 +68,10 @@ function App() {
         </Route>
 
         <Route exact path="/">
-          <Home loading={loading} setLoading={setLoading}
-           user={user} />
+            <SnackbarProvider maxSnack={1} preventDuplicate style={{ backgroundColor: "#4F5DFF" }}>
+            <Home loading={loading} setLoading={setLoading}
+            user={user} />
+          </SnackbarProvider>
         </Route>
 
         </Switch>

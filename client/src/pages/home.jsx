@@ -9,6 +9,7 @@ import Placeholder from '../components/placeholder';
 import Edit from '../components/edit';
 import Delete from '../components/delete';
 import ScrollTop from '../components/top';
+import { useSnackbar } from 'notistack';
 
 const useStyles = makeStyles({
   skeleton: {
@@ -41,7 +42,6 @@ export default function Home(props) {
   const { loading, setLoading } = props;
   const { userId } = props.user;
 
-  const classes = useStyles()
   const [date, setDate] = useState('')
   const [time, setTime] = useState('')
   const [show, setShow] = useState(true)
@@ -51,6 +51,8 @@ export default function Home(props) {
   const [empty, setEmpty] = useState('')
   const [del, setDel] = useState(false)
   const [delId, setDelId] = useState(null)
+  const classes = useStyles()
+  const { enqueueSnackbar } = useSnackbar()
 
   useEffect(() => {
     let currentDate = new Date()
@@ -132,7 +134,7 @@ export default function Home(props) {
 
                         //to be added...
                         if (time === fromTimeSec) {
-
+                          enqueueSnackbar(action, { persist: true })
                         }
 
                         return (
