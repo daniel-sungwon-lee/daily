@@ -10,6 +10,7 @@ import Edit from '../components/edit';
 import Delete from '../components/delete';
 import ScrollTop from '../components/top';
 import { useSnackbar } from 'notistack';
+import playSound from '../sound';
 
 const useStyles = makeStyles({
   skeleton: {
@@ -136,6 +137,10 @@ export default function Home(props) {
                         const fromTimeSec = fromDate.toLocaleTimeString()
 
                         if (time === fromTimeSec) {
+                          for(let i =0; i<1; i++) {
+                            playSound('/sounds/intuition.mp3')
+                          }
+
                           enqueueSnackbar(action, { persist: true, action: (
 
                               <IconButton onClick={() => closeSnackbar()}
