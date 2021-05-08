@@ -127,6 +127,8 @@ export default function Home(props) {
                       data.map(routine => {
                         const { id, from, to, action } = routine
 
+                        let opacity = "opacity"
+
                         const fromDate = new Date(`March 03 2033 ${from}`)
                         const toDate = new Date(`March 03 2033 ${to}`)
 
@@ -135,6 +137,11 @@ export default function Home(props) {
 
                         const time = new Date().toLocaleTimeString()
                         const fromTimeSec = fromDate.toLocaleTimeString()
+                        const toTimeSec = toDate.toLocaleTimeString()
+
+                        if (fromTimeSec < time && time < toTimeSec) {
+                          opacity=""
+                        }
 
                         if (time === fromTimeSec) {
                           for(let i =0; i<1; i++) {
@@ -152,7 +159,7 @@ export default function Home(props) {
                         }
 
                         return (
-                          <div key={id}>
+                          <div key={id} className={opacity}>
                             <div className="mt-4 mb-5">
 
                               <div className="d-flex justify-content-between">
