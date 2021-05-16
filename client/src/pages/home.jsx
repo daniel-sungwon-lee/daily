@@ -140,7 +140,7 @@ export default function Home(props) {
                         const toTimeSec = toDate.toLocaleTimeString()
 
                         if (fromTimeSec < time && time < toTimeSec) {
-                          opacity="hi"
+                          opacity=""
                         }
 
                         if (time === fromTimeSec) {
