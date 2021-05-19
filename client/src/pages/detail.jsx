@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Grow, Paper } from '@material-ui/core';
+import { Checkbox, Grow, List, ListItem, ListItemIcon,
+         Paper, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
 
@@ -15,6 +16,7 @@ export default function Detail(props) {
 
   const classes = useStyles();
   const [show, setShow] = useState(true)
+  const [data, setData] = useState([])
 
   useEffect(() => {
     setShow(false)
@@ -29,7 +31,22 @@ export default function Detail(props) {
                : <>
                   <Grow in>
                     <Paper className={classes.paper}>
+                      <List>
+                        {
+                          data.map(todo => {
+                            const { id, action, isComplete } = todo
 
+                            return (
+                              <ListItem>
+                                <ListItemIcon>
+                                  <Checkbox checked={isComplete} color="primary" />
+                                </ListItemIcon>
+                                <ListItemText id={id} primary={action} />
+                              </ListItem>
+                            )
+                          })
+                        }
+                      </List>
                     </Paper>
                   </Grow>
                  </>
