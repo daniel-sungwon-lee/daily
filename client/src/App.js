@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Nav from './components/nav';
 import Progress from './components/progress';
 import Home from './pages/home';
+import Detail from './pages/detail';
 import Auth from './pages/auth';
 import decodeToken from './decodeToken';
 import { SnackbarProvider } from 'notistack';
@@ -75,6 +76,10 @@ function App() {
             user={user} />
 
           </SnackbarProvider>
+        </Route>
+
+        <Route exact path="/detail">
+          <Detail />
         </Route>
 
         </Switch>
