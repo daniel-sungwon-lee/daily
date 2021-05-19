@@ -79,7 +79,7 @@ function App() {
         </Route>
 
         <Route exact path="/detail">
-          <Detail />
+          <Detail setLoading={setLoading} />
         </Route>
 
         </Switch>

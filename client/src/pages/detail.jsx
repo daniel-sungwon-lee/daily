@@ -11,12 +11,15 @@ const useStyles = makeStyles({
 })
 
 export default function Detail(props) {
+  const { setLoading } = props;
+
   const classes = useStyles();
   const [show, setShow] = useState(true)
 
   useEffect(() => {
     setShow(false)
-  }, [])
+    setLoading(false)
+  }, [setLoading])
 
   return (
     <div className="container">
