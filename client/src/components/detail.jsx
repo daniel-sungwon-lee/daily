@@ -5,6 +5,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
 
 const useStyles = makeStyles({
+  dialog: {
+    width: "75%",
+    borderRadius: "1rem"
+  },
   paper: {
     padding: "3rem",
     borderRadius: "1rem"
@@ -24,7 +28,8 @@ export default function Detail(props) {
   }, [setLoading])
 
   return (
-    <Dialog open={open} onClose={() => setOpen(false)} scroll="body" TransitionComponent={Grow}>
+    <Dialog open={open} onClose={() => setOpen(false)} scroll="body" TransitionComponent={Grow}
+     classes={{ paper: classes.dialog }}>
       <div className="m-3">
         {
           show ? <Placeholder />
