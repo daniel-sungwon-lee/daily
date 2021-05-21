@@ -43,7 +43,7 @@ const useStyles = makeStyles({
 })
 
 export default function Home(props) {
-  const { loading, setLoading } = props;
+  const { loading, setLoading, setDetail } = props;
   const { userId } = props.user;
 
   const [date, setDate] = useState('')

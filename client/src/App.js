@@ -12,6 +12,7 @@ import { SnackbarProvider } from 'notistack';
 function App() {
   const [loading, setLoading] = useState(true)
   const [user, setUser] = useState(null)
+  const [detail, setDetail] = useState(null)
 
   useEffect(() => {
     const token = window.localStorage.getItem("dailyUserToken")
@@ -73,13 +74,13 @@ function App() {
             backgroundColor: "#4F5DFF", fontSize: "18px" }}>
 
             <Home loading={loading} setLoading={setLoading}
-            user={user} />
+            user={user} setDetail={setDetail} />
 
           </SnackbarProvider>
         </Route>
 
         <Route exact path="/detail">
-          <Detail setLoading={setLoading} />
+          <Detail setLoading={setLoading} detail={detail} />
         </Route>
 
         </Switch>
