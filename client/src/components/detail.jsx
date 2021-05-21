@@ -30,7 +30,7 @@ export default function Detail(props) {
   return (
     <Dialog open={open} onClose={() => setOpen(false)} scroll="body" TransitionComponent={Grow}
      classes={{ paper: classes.dialog }}>
-      <div className="m-3">
+      <div className="m-5">
         {
           show ? <Placeholder />
                : <>

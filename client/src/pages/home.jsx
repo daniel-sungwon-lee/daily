@@ -40,11 +40,6 @@ const useStyles = makeStyles({
   },
   closeIcon: {
     color: "white"
-  },
-  detail: {
-    "&:hover": {
-      cursor: "pointer"
-    }
   }
 })
 
@@ -108,9 +103,10 @@ export default function Home(props) {
     setDelId(id)
   }
 
-  const handleDetail = (id) => {
-    setDetail(id)
+  const handleDetail = (popupState, id) => {
+    popupState.close()
     setOpenDetail(true)
+    setDetail(id)
   }
 
   return (
@@ -173,7 +169,7 @@ export default function Home(props) {
                         }
 
                         return (
-                          <div key={id} className={classes.detail} onClick={() => handleDetail(id)}>
+                          <div key={id}>
                             <div className={opacity}>
                               <div className="mt-4 mb-5">
 
@@ -214,6 +210,12 @@ export default function Home(props) {
                                               <MenuItem onClick={() => handleDelete(popupState, id)}>
                                                 <div className="p-2" style={{ color: "#f50057" }}>
                                                   delete
+                                                </div>
+                                              </MenuItem>
+
+                                              <MenuItem onClick={() => handleDetail(popupState, id)}>
+                                                <div className="p-2" style={{ color: "#4F5DFF" }}>
+                                                  detail
                                                 </div>
                                               </MenuItem>
 
