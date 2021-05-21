@@ -8,6 +8,7 @@ import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 import Placeholder from '../components/placeholder';
 import Edit from '../components/edit';
 import Delete from '../components/delete';
+import Detail from '../components/detail';
 import ScrollTop from '../components/top';
 import { useSnackbar } from 'notistack';
 import playSound from '../sound';
@@ -39,11 +40,16 @@ const useStyles = makeStyles({
   },
   closeIcon: {
     color: "white"
+  },
+  detail: {
+    "&:hover": {
+      cursor: "pointer"
+    }
   }
 })
 
 export default function Home(props) {
-  const { loading, setLoading, setDetail } = props;
+  const { loading, setLoading } = props;
   const { userId } = props.user;
 
   const [date, setDate] = useState('')
@@ -55,6 +61,9 @@ export default function Home(props) {
   const [empty, setEmpty] = useState('')
   const [del, setDel] = useState(false)
   const [delId, setDelId] = useState(null)
+  const [openDetail, setOpenDetail] = useState(false)
+  const [detail, setDetail] = useState(null)
+
   const classes = useStyles()
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
 
@@ -97,6 +106,11 @@ export default function Home(props) {
     popupState.close()
     setDel(true)
     setDelId(id)
+  }
+
+  const handleDetail = (id) => {
+    setDetail(id)
+    setOpenDetail(true)
   }
 
   return (
@@ -159,60 +173,63 @@ export default function Home(props) {
                         }
 
                         return (
-                          <div key={id} className={opacity}>
-                            <div className="mt-4 mb-5">
+                          <div key={id} className={classes.detail} onClick={() => handleDetail(id)}>
+                            <div className={opacity}>
+                              <div className="mt-4 mb-5">
 
-                              <div className="d-flex justify-content-between">
+                                <div className="d-flex justify-content-between">
 
-                                <div className="d-flex mt-2">
-                                  <Avatar classes={{ root: classes.avatar }}>
-                                    <Schedule className={classes.icon} />
-                                  </Avatar>
+                                  <div className="d-flex mt-2">
+                                    <Avatar classes={{ root: classes.avatar }}>
+                                      <Schedule className={classes.icon} />
+                                    </Avatar>
 
-                                  <h5>{fromTime}</h5>
-                                  <h5 className="mx-2">to</h5>
-                                  <h5>{toTime}</h5>
+                                    <h5>{fromTime}</h5>
+                                    <h5 className="mx-2">to</h5>
+                                    <h5>{toTime}</h5>
+                                  </div>
+
+                                  <div>
+                                    <PopupState id="menu" variant="popover">
+                                      {
+                                        popupState => (
+                                          <>
+                                            <IconButton {...bindTrigger(popupState)}>
+                                              <MoreVertRounded />
+                                            </IconButton>
+
+                                            <Menu {...bindMenu(popupState)} classes={{
+                                              paper: classes.menu }}
+                                              anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+                                              transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                                              getContentAnchorEl={null}
+                                              >
+
+                                              <MenuItem onClick={() => handleEdit(popupState, id)}>
+                                                <div className="p-2" style={{ color: "#4F5DFF" }}>
+                                                  edit
+                                                </div>
+                                              </MenuItem>
+
+                                              <MenuItem onClick={() => handleDelete(popupState, id)}>
+                                                <div className="p-2" style={{ color: "#f50057" }}>
+                                                  delete
+                                                </div>
+                                              </MenuItem>
+
+                                            </Menu>
+                                          </>
+                                        )
+                                      }
+                                    </PopupState>
+                                  </div>
+
                                 </div>
 
-                                <div>
-                                  <PopupState id="menu" variant="popover">
-                                    {
-                                      popupState => (
-                                        <>
-                                          <IconButton {...bindTrigger(popupState)}>
-                                            <MoreVertRounded />
-                                          </IconButton>
-
-                                          <Menu {...bindMenu(popupState)} classes={{
-                                            paper: classes.menu }}
-                                            anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-                                            transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                                            getContentAnchorEl={null}
-                                            >
-
-                                            <MenuItem onClick={() => handleEdit(popupState, id)}>
-                                              <div className="p-2" style={{ color: "#4F5DFF" }}>
-                                                edit
-                                              </div>
-                                            </MenuItem>
-
-                                            <MenuItem onClick={() => handleDelete(popupState, id)}>
-                                              <div className="p-2" style={{ color: "#f50057" }}>
-                                                delete
-                                              </div>
-                                            </MenuItem>
-
-                                          </Menu>
-                                        </>
-                                      )
-                                    }
-                                  </PopupState>
+                                <div className="d-flex justify-content-center mt-4">
+                                  <h4 className={classes.action}>{action}</h4>
                                 </div>
 
-                              </div>
-
-                              <div className="d-flex justify-content-center mt-4">
-                                <h4 className={classes.action}>{action}</h4>
                               </div>
 
                             </div>
@@ -234,6 +251,9 @@ export default function Home(props) {
                   <Edit open={open} setOpen={setOpen} id={editId} userId={userId} />
 
                   <Delete open={del} setOpen={setDel} id={delId} userId={userId} />
+
+                  <Detail open={openDetail} setOpen={setOpenDetail} id={detail} userId={userId}
+                   setLoading={setLoading} />
 
                  </>
         }

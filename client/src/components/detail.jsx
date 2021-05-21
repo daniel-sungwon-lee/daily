@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Checkbox, Grow, List, ListItem, ListItemIcon,
-         Paper, ListItemText } from '@material-ui/core';
+         Paper, ListItemText, Dialog } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 })
 
 export default function Detail(props) {
-  const { setLoading } = props;
+  const { setLoading, open, setOpen, detail, userId } = props;
 
   const classes = useStyles();
   const [show, setShow] = useState(true)
@@ -24,8 +24,8 @@ export default function Detail(props) {
   }, [setLoading])
 
   return (
-    <div className="container">
-      <div>
+    <Dialog open={open} onClose={() => setOpen(false)} scroll="body" TransitionComponent={Grow}>
+      <div className="m-3">
         {
           show ? <Placeholder />
                : <>
@@ -52,6 +52,6 @@ export default function Detail(props) {
                  </>
         }
       </div>
-    </div>
+    </Dialog>
   )
 }
