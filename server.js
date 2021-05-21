@@ -190,6 +190,21 @@ app.delete('/api/routines/:userId/:id', (req, res, next) => {
     .catch(err => next(err));
 })
 
+//detail page
+app.get('/api/detail/:id', (req, res, next) => {
+  const { id } = req.params
+
+  const sql = `
+  select * from "todo"
+  where "id" = $1
+  `;
+  const params = [id]
+
+  db.query(sql, params)
+    .then(result => res.status(200).json(result.rows))
+    .catch(err => next(err));
+})
+
 //for Heroku deployment
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
