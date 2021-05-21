@@ -34,14 +34,14 @@ export default function Detail(props) {
                       <List>
                         {
                           data.map(todo => {
-                            const { id, action, isComplete } = todo
+                            const { todoId, action, isComplete } = todo
 
                             return (
                               <ListItem>
                                 <ListItemIcon>
                                   <Checkbox checked={isComplete} color="primary" />
                                 </ListItemIcon>
-                                <ListItemText id={id} primary={action} />
+                                <ListItemText id={todoId} primary={action} />
                               </ListItem>
                             )
                           })
