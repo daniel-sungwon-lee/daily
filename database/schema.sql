@@ -19,6 +19,17 @@ CREATE TABLE "routines" (
   OIDS=FALSE
 );
 
+CREATE TABLE "todo" (
+	"id" serial NOT NULL,
+	"todoId" serial NOT NULL,
+	"action" TEXT NOT NULL,
+	"isComplete" BOOLEAN NOT NULL,
+	CONSTRAINT "todo_pk" PRIMARY KEY ("todoId")
+) WITH (
+  OIDS=FALSE
+);
 
 
 ALTER TABLE "routines" ADD CONSTRAINT "routines_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
+
+ALTER TABLE "todo" ADD CONSTRAINT "todo_fk0" FOREIGN KEY ("id") REFERENCES "routines"("id");
