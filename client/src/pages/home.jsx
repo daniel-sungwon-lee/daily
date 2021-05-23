@@ -254,7 +254,7 @@ export default function Home(props) {
 
                   <Delete open={del} setOpen={setDel} id={delId} userId={userId} />
 
-                  <Detail open={openDetail} setOpen={setOpenDetail} id={detail} userId={userId}
+                  <Detail open={openDetail} setOpen={setOpenDetail} id={detail}
                    setLoading={setLoading} />
 
                  </>
