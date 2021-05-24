@@ -205,6 +205,24 @@ app.get('/api/detail/:id', (req, res, next) => {
     .catch(err => next(err));
 })
 
+app.post('/api/detail/:id', (req, res, next) => {
+  const { id } = req.params
+  const { action, isComplete } = req.body;
+
+  const sql = `
+  insert into "todo" ("id","action","isComplete")
+  values ($1, $2, $3)
+  `;
+  const params = [id, action, isComplete]
+
+  db.query(sql, params)
+    .then(result => {
+      res.status(201).json(result.rows[0])
+    })
+    .catch(err => next(err))
+})
+
+
 //for Heroku deployment
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
