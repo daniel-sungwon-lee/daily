@@ -205,9 +205,8 @@ app.get('/api/detail/:id', (req, res, next) => {
     .catch(err => next(err));
 })
 
-app.post('/api/detail/:id', (req, res, next) => {
-  const { id } = req.params
-  const { action, isComplete } = req.body;
+app.post('/api/detail/', (req, res, next) => {
+  const { id, action, isComplete } = req.body;
 
   const sql = `
   insert into "todo" ("id","action","isComplete")
