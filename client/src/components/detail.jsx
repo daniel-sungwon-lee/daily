@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Checkbox, Grow, List, ListItem, ListItemIcon,
-         Paper, ListItemText, Dialog } from '@material-ui/core';
+import { Checkbox, Grow, List, ListItem, ListItemIcon, Slide,
+         Paper, ListItemText, Dialog, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
+import { CloseRounded } from '@material-ui/icons';
 
 const useStyles = makeStyles({
-  dialog: {
-    width: "75%",
-    borderRadius: "1rem"
-  },
   paper: {
     padding: "3rem",
     borderRadius: "1rem"
@@ -19,8 +16,16 @@ const useStyles = makeStyles({
     top: "50%",
     transform: "translate(-50%, -50%)",
     margin: "0"
+  },
+  closeIcon: {
+    marginLeft: "0.5rem",
+    marginTop: "0.5rem"
   }
 })
+
+const Transition = React.forwardRef(function Transition(props, ref) {
+  return <Slide direction="up" ref={ref} {...props} />;
+});
 
 export default function Detail(props) {
   const { setLoading, open, setOpen, detail } = props;
@@ -36,8 +41,13 @@ export default function Detail(props) {
   }, [setLoading, detail])
 
   return (
-    <Dialog open={open} onClose={() => setOpen(false)} scroll="body" TransitionComponent={Grow}
-     classes={{ paper: classes.dialog }}>
+    <Dialog open={open} onClose={() => setOpen(false)} scroll="body"
+     fullScreen TransitionComponent={Transition}>
+
+      <IconButton onClick={() => setOpen(false)} className={classes.closeIcon}>
+        <CloseRounded fontSize="large" color="secondary" />
+      </IconButton>
+
       <div className="m-5">
         {
           show ? <Placeholder />
