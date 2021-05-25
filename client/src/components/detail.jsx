@@ -8,7 +8,8 @@ import { CloseRounded } from '@material-ui/icons';
 const useStyles = makeStyles({
   paper: {
     padding: "3rem",
-    borderRadius: "1rem"
+    borderRadius: "1rem",
+    position: "relative"
   },
   emp: {
     position: "absolute",
