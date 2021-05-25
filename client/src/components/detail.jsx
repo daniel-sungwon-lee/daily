@@ -49,7 +49,7 @@ export default function Detail(props) {
         <CloseRounded fontSize="large" color="secondary" />
       </IconButton>
 
-      <div className="m-5">
+      <div className="my-4 mx-5">
         {
           show ? <Placeholder />
                : <>
