@@ -39,7 +39,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Detail(props) {
-  const { setLoading, open, setOpen, detail } = props;
+  const { setLoading, open, setOpen, id } = props;
 
   const classes = useStyles();
   const [show, setShow] = useState(true)
@@ -49,7 +49,7 @@ export default function Detail(props) {
   useEffect(() => {
       setShow(false)
       setLoading(false)
-  }, [setLoading, detail])
+  }, [setLoading, id])
 
   return (
     <Dialog open={open} onClose={() => setOpen(false)} scroll="body"
