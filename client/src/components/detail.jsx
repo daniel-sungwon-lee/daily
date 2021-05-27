@@ -99,7 +99,7 @@ export default function Detail(props) {
         <AddRounded fontSize="large" style={{ color: "white" }} />
       </Fab>
 
-      <Todo open={todoOpen} setOpen={setTodoOpen} />
+      <Todo open={todoOpen} setOpen={setTodoOpen} id={id} />
 
     </Dialog>
   )

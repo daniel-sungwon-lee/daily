@@ -16,7 +16,7 @@ const useStyles = makeStyles({
 })
 
 export default function Todo(props) {
-  const { open, setOpen } = props
+  const { open, setOpen, id } = props
   const classes = useStyles();
 
   const [action, setAction] = useState('')
@@ -24,6 +24,23 @@ export default function Todo(props) {
   const handleClose = () => {
     setAction('')
     setOpen(false)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const reqBody = {id, action, isComplete:false }
+
+    fetch(`/api/detail/`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reqBody)
+    })
+      .then(() => {
+        setAction('')
+        setOpen(false)
+      })
+      .catch(() => window.location.reload())
   }
 
   return (
@@ -35,28 +52,31 @@ export default function Todo(props) {
           Add Todo
         </DialogTitle>
 
-        <DialogContent>
+        <form onSubmit={handleSubmit}>
 
-          <TextField required id="action" value={action} InputLabelProps={{ required: false }}
-          onChange={(event) => setAction(event.target.value)} color="secondary" multiline
-          fullWidth />
+          <DialogContent>
 
-        </DialogContent>
+            <TextField required id="action" value={action} InputLabelProps={{ required: false }}
+            onChange={(event) => setAction(event.target.value)} color="secondary" multiline
+            fullWidth />
 
-        <DialogActions>
+          </DialogContent>
 
-          <Button color="secondary" classes={{ text: classes.button }}
-           onClick={handleClose}>
-            close
-          </Button>
+          <DialogActions>
 
-          <Button type="submit" classes={{ text: classes.button }}
-           style={{ color: "#4F5DFF" }}>
-            add
-          </Button>
+            <Button color="secondary" classes={{ text: classes.button }}
+            onClick={handleClose}>
+              close
+            </Button>
 
-        </DialogActions>
+            <Button type="submit" classes={{ text: classes.button }}
+            style={{ color: "#4F5DFF" }}>
+              add
+            </Button>
 
+          </DialogActions>
+
+        </form>
 
       </div>
     </Dialog>
