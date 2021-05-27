@@ -114,7 +114,8 @@ export default function New(props) {
             </div>
 
             <TextField multiline label="Action" helperText="Ex: Code" color="secondary"
-             value={action} onChange={(e) => setAction(e.target.value)} required InputLabelProps={{ required: false }} />
+             value={action} onChange={(e) => setAction(e.target.value)} required
+             InputLabelProps={{ required: false }} fullWidth />
 
           </DialogContent>
 
