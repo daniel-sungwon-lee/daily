@@ -49,19 +49,25 @@ export default function Detail(props) {
   const [todoOpen, setTodoOpen] = useState(false)
 
   useEffect(() => {
-    fetch(`/api/detail/${id}`)
-      .then(res => res.json())
-      .then(data => {
+    if(id === null) {
+      return
 
-        if(data.length > 0) {
-          setEmpty('d-none')
-        }
+    } else {
 
-        setData(data)
-        setShow(false)
-        setLoading(false)
-      })
-      .catch(() => window.location.reload())
+      fetch(`/api/detail/${id}`)
+        .then(res => res.json())
+        .then(data => {
+
+          if(data.length > 0) {
+            setEmpty('d-none')
+          }
+
+          setData(data)
+          setShow(false)
+          setLoading(false)
+        })
+        .catch(() => window.location.reload())
+    }
 
   }, [setLoading, id, data])
 
