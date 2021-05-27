@@ -59,23 +59,30 @@ const customTimeTheme = createMuiTheme({
 export default function Edit(props) {
   const classes = useStyles();
   const { open, setOpen, id, userId } = props;
+
   const [newFrom, setFrom] = useState(null)
   const [newTo, setTo] = useState(null)
   const [newAction, setAction] = useState('')
 
   useEffect(() => {
-    fetch(`/api/routines/${userId}/${id}`)
-      .then(res => res.json())
-      .then(data => {
-        const { from, to, action } = data
+    if(id === null) {
+      return
 
-        const fromDate = new Date(`March 03 2033 ${from}`)
-        const toDate = new Date(`March 03 2033 ${to}`)
+    } else {
+      fetch(`/api/routines/${userId}/${id}`)
+        .then(res => res.json())
+        .then(data => {
+          const { from, to, action } = data
 
-        setFrom(fromDate)
-        setTo(toDate)
-        setAction(action)
-      })
+          const fromDate = new Date(`March 03 2033 ${from}`)
+          const toDate = new Date(`March 03 2033 ${to}`)
+
+          setFrom(fromDate)
+          setTo(toDate)
+          setAction(action)
+        })
+        .catch(() => window.location.reload())
+    }
   }, [id, userId])
 
   const handleClose = () => {
