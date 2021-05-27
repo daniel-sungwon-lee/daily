@@ -4,6 +4,7 @@ import { Checkbox, Grow, List, ListItem, ListItemIcon, Slide,
 import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
 import { AddRounded, CloseRounded } from '@material-ui/icons';
+import Todo from '../components/todo';
 
 const useStyles = makeStyles({
   paper: {
@@ -45,6 +46,7 @@ export default function Detail(props) {
   const [show, setShow] = useState(true)
   const [data, setData] = useState([])
   const [empty, setEmpty] = useState('')
+  const [todoOpen, setTodoOpen] = useState(false)
 
   useEffect(() => {
       setShow(false)
@@ -92,9 +94,12 @@ export default function Detail(props) {
         }
       </div>
 
-      <Fab classes={{ root: classes.fab }} className={classes.fab}>
+      <Fab onClick={() => setTodoOpen(true)} classes={{ root: classes.fab }}
+       className={classes.fab}>
         <AddRounded fontSize="large" style={{ color: "white" }} />
       </Fab>
+
+      <Todo open={todoOpen} setOpen={setTodoOpen} />
 
     </Dialog>
   )
