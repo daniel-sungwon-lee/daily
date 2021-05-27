@@ -60,6 +60,8 @@ export default function Detail(props) {
 
           if(data.length > 0) {
             setEmpty('d-none')
+          } else {
+            setEmpty('')
           }
 
           setData(data)
@@ -72,7 +74,7 @@ export default function Detail(props) {
   }, [setLoading, id, data])
 
   return (
-    <Dialog open={open} onClose={() => setOpen(false)} scroll="body"
+    <Dialog key={id} open={open} onClose={() => setOpen(false)} scroll="body"
      fullScreen TransitionComponent={Transition}>
 
       <IconButton onClick={() => setOpen(false)} className={classes.closeIcon}>

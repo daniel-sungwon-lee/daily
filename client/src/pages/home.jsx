@@ -26,7 +26,10 @@ const useStyles = makeStyles({
     margin: "0.5rem 0",
     width: "50%",
     wordWrap: "break-word",
-    wordBreak: "break-word"
+    wordBreak: "break-word",
+    "&:hover": {
+      cursor: "pointer"
+    }
   },
   avatar: {
     backgroundColor: "#788DFF",
@@ -105,6 +108,11 @@ export default function Home(props) {
 
   const handleDetail = (popupState, id) => {
     popupState.close()
+    setOpenDetail(true)
+    setDetail(id)
+  }
+
+  const handleDetail2 = (id) => {
     setOpenDetail(true)
     setDetail(id)
   }
@@ -229,7 +237,9 @@ export default function Home(props) {
                                 </div>
 
                                 <div className="d-flex justify-content-center mt-4">
-                                  <h4 className={classes.action}>{action}</h4>
+                                  <h4 className={classes.action} onClick={() => handleDetail2(id)}>
+                                    {action}
+                                  </h4>
                                 </div>
 
                               </div>
