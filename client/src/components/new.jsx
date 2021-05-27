@@ -100,14 +100,17 @@ export default function New(props) {
         <form onSubmit={handleSubmit}>
           <DialogContent>
 
-            <div className="mb-2">
+            <div className="mb-2 d-flex justify-content-between">
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <ThemeProvider theme={customTimeTheme}>
 
                   <KeyboardTimePicker label="From" placeholder="3:00 PM" mask="__:__ _M"
-                  value={from} onChange={date => setFrom(date)} required InputLabelProps={{ required: false }} />
+                  value={from} onChange={date => setFrom(date)} required
+                  InputLabelProps={{ required: false }} fullWidth/>
+
                   <KeyboardTimePicker label="To" placeholder="6:00 PM" mask="__:__ _M"
-                  value={to} onChange={date => setTo(date)} required InputLabelProps={{ required: false }} />
+                  value={to} onChange={date => setTo(date)} required
+                  InputLabelProps={{ required: false }} fullWidth/>
 
                 </ThemeProvider>
               </MuiPickersUtilsProvider>

@@ -112,21 +112,25 @@ export default function Edit(props) {
         <form onSubmit={handleSubmit}>
           <DialogContent>
 
-            <div className="mb-2">
+            <div className="mb-2 d-flex justify-content-between">
               <MuiPickersUtilsProvider utils={DateFnsUtils}>
                 <ThemeProvider theme={customTimeTheme}>
 
                   <KeyboardTimePicker label="From" placeholder="3:00 PM" mask="__:__ _M"
-                    value={newFrom} onChange={date => setFrom(date)} required InputLabelProps={{ required: false }} />
+                    value={newFrom} onChange={date => setFrom(date)} required
+                    InputLabelProps={{ required: false }} fullWidth />
+
                   <KeyboardTimePicker label="To" placeholder="6:00 PM" mask="__:__ _M"
-                    value={newTo} onChange={date => setTo(date)} required InputLabelProps={{ required: false }} />
+                    value={newTo} onChange={date => setTo(date)} required
+                    InputLabelProps={{ required: false }} fullWidth />
 
                 </ThemeProvider>
               </MuiPickersUtilsProvider>
             </div>
 
             <TextField multiline label="Action" helperText="Ex: Code" color="secondary"
-              value={newAction} onChange={(e) => setAction(e.target.value)} required InputLabelProps={{ required: false }} />
+              value={newAction} onChange={(e) => setAction(e.target.value)} required
+              InputLabelProps={{ required: false }} fullWidth />
 
           </DialogContent>
 
