@@ -49,9 +49,21 @@ export default function Detail(props) {
   const [todoOpen, setTodoOpen] = useState(false)
 
   useEffect(() => {
-      setShow(false)
-      setLoading(false)
-  }, [setLoading, id])
+    fetch(`/api/detail/${id}`)
+      .then(res => res.json())
+      .then(data => {
+
+        if(data.length > 0) {
+          setEmpty('d-none')
+        }
+
+        setData(data)
+        setShow(false)
+        setLoading(false)
+      })
+      .catch(() => window.location.reload())
+
+  }, [setLoading, id, data])
 
   return (
     <Dialog open={open} onClose={() => setOpen(false)} scroll="body"
@@ -79,10 +91,13 @@ export default function Detail(props) {
 
                             return (
                               <ListItem>
+
                                 <ListItemIcon>
                                   <Checkbox checked={isComplete} color="primary" />
                                 </ListItemIcon>
+
                                 <ListItemText id={todoId} primary={action} />
+
                               </ListItem>
                             )
                           })
