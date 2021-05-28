@@ -105,11 +105,13 @@ export default function Detail(props) {
                               <ListItem>
 
                                 <ListItemIcon>
-                                  <Checkbox checked={isComplete} color="primary"
+                                  <Checkbox id={todoId} checked={isComplete} color="primary"
                                    onChange={() => handleCheckbox(todoId)} />
                                 </ListItemIcon>
 
-                                <ListItemText id={todoId} primary={action} />
+                                <label for={todoId}>
+                                  <ListItemText id={todoId} primary={action} />
+                                </label>
 
                               </ListItem>
                             )
