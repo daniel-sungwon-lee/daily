@@ -73,8 +73,16 @@ export default function Detail(props) {
 
   }, [setLoading, id, data])
 
-  const handleCheckbox = (todoId) => {
+  const handleCheckbox = (todoId) => (e) => {
+    const isComplete = e.target.checked
+    const reqBody = { isComplete }
 
+    fetch(`/api/detail/${todoId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(reqBody)
+    })
+      .catch(() => window.location.reload())
   }
 
   return (
@@ -106,7 +114,7 @@ export default function Detail(props) {
 
                                 <ListItemIcon>
                                   <Checkbox id={todoId} checked={isComplete} color="primary"
-                                   onChange={() => handleCheckbox(todoId)} />
+                                   onChange={handleCheckbox(todoId)} />
                                 </ListItemIcon>
 
                                 <label for={todoId}>

@@ -197,6 +197,8 @@ app.get('/api/detail/:id', (req, res, next) => {
   const sql = `
   select * from "todo"
   where "id" = $1
+  order by "isComplete",
+  "todoId"
   `;
   const params = [id]
 
