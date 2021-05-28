@@ -110,14 +110,14 @@ export default function Detail(props) {
                             const { todoId, action, isComplete } = todo
 
                             return (
-                              <ListItem>
+                              <ListItem className="d-flex align-items-center">
 
                                 <ListItemIcon>
                                   <Checkbox id={todoId} checked={isComplete} color="primary"
                                    onChange={handleCheckbox(todoId)} />
                                 </ListItemIcon>
 
-                                <label for={todoId}>
+                                <label for={todoId} className="mb-0">
                                   <ListItemText id={todoId} primary={action} />
                                 </label>
 
