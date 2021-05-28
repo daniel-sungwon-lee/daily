@@ -73,6 +73,10 @@ export default function Detail(props) {
 
   }, [setLoading, id, data])
 
+  const handleCheckbox = (todoId) => {
+
+  }
+
   return (
     <Dialog key={id} open={open} onClose={() => setOpen(false)} scroll="body"
      fullScreen TransitionComponent={Transition}>
@@ -81,7 +85,7 @@ export default function Detail(props) {
         <CloseRounded fontSize="large" color="secondary" />
       </IconButton>
 
-      <div className="my-4 mx-5">
+      <div className="container mt-4 mb-5">
         {
           show ? <Placeholder />
                : <>
@@ -101,7 +105,8 @@ export default function Detail(props) {
                               <ListItem>
 
                                 <ListItemIcon>
-                                  <Checkbox checked={isComplete} color="primary" />
+                                  <Checkbox checked={isComplete} color="primary"
+                                   onChange={() => handleCheckbox(todoId)} />
                                 </ListItemIcon>
 
                                 <ListItemText id={todoId} primary={action} />
