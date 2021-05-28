@@ -32,6 +32,9 @@ const useStyles = makeStyles({
     "&:hover": {
       backgroundColor: "#788DFF"
     }
+  },
+  checkbox: {
+    color: "#788DFF !important"
   }
 })
 
@@ -113,8 +116,12 @@ export default function Detail(props) {
                               <ListItem className="d-flex align-items-center">
 
                                 <ListItemIcon>
+
                                   <Checkbox id={todoId} checked={isComplete} color="primary"
-                                   onChange={handleCheckbox(todoId)} />
+                                   onChange={handleCheckbox(todoId)} classes={{
+                                     checked: classes.checkbox
+                                   }} />
+
                                 </ListItemIcon>
 
                                 <label for={todoId} className="mb-0">
