@@ -50,6 +50,7 @@ export default function Detail(props) {
   const [data, setData] = useState([])
   const [empty, setEmpty] = useState('')
   const [todoOpen, setTodoOpen] = useState(false)
+  const [checked, setChecked] = useState([])
 
   useEffect(() => {
     if(id === null) {
@@ -113,18 +114,18 @@ export default function Detail(props) {
                             const { todoId, action, isComplete } = todo
 
                             return (
-                              <ListItem className="d-flex align-items-center">
+                              <ListItem key={todoId} className="d-flex align-items-center">
 
                                 <ListItemIcon>
 
-                                  <Checkbox id={todoId} checked={isComplete} color="primary"
+                                  <Checkbox id={todoId} checked={isComplete || checked.includes(todoId)} color="primary"
                                    onChange={handleCheckbox(todoId)} classes={{
                                      checked: classes.checkbox
                                    }} />
 
                                 </ListItemIcon>
 
-                                <label for={todoId} className="mb-0">
+                                <label htmlFor={todoId} className="mb-0">
                                   <ListItemText id={todoId} primary={action} />
                                 </label>
 
