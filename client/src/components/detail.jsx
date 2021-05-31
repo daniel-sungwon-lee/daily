@@ -50,7 +50,6 @@ export default function Detail(props) {
   const [data, setData] = useState([])
   const [empty, setEmpty] = useState('')
   const [todoOpen, setTodoOpen] = useState(false)
-  const [checked, setChecked] = useState([])
 
   useEffect(() => {
     if(id === null) {
@@ -118,7 +117,7 @@ export default function Detail(props) {
 
                                 <ListItemIcon>
 
-                                  <Checkbox id={todoId} checked={isComplete || checked.includes(todoId)} color="primary"
+                                  <Checkbox id={todoId} checked={isComplete} color="primary"
                                    onChange={handleCheckbox(todoId)} classes={{
                                      checked: classes.checkbox
                                    }} />
