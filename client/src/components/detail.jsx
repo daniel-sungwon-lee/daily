@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Checkbox, Grow, List, ListItem, ListItemIcon, Slide,
-         Paper, ListItemText, Dialog, IconButton, Fab } from '@material-ui/core';
+         Paper, ListItemText, Dialog, IconButton, Fab,
+         ListItemSecondaryAction } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Placeholder from '../components/placeholder';
 import { AddRounded, CloseRounded } from '@material-ui/icons';
@@ -127,6 +128,14 @@ export default function Detail(props) {
                                 <label htmlFor={todoId} className="mb-0">
                                   <ListItemText id={todoId} primary={action} />
                                 </label>
+
+                                <ListItemSecondaryAction>
+
+                                   <IconButton>
+                                     <CloseRounded />
+                                   </IconButton>
+
+                                </ListItemSecondaryAction>
 
                               </ListItem>
                             )
