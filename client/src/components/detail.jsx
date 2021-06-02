@@ -135,7 +135,7 @@ export default function Detail(props) {
 
                                 <ListItemSecondaryAction>
 
-                                   <IconButton>
+                                   <IconButton onClick={() => handleDelete(todoId)}>
                                      <CloseRounded />
                                    </IconButton>
 
