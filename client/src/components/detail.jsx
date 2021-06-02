@@ -89,6 +89,10 @@ export default function Detail(props) {
       .catch(() => window.location.reload())
   }
 
+  const handleDelete = (todoId) => {
+
+  }
+
   return (
     <Dialog key={id} open={open} onClose={() => setOpen(false)} scroll="body"
      fullScreen TransitionComponent={Transition}>
