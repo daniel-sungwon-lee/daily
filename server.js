@@ -241,6 +241,22 @@ app.patch('/api/detail/:id', (req, res, next) => {
     .catch(err => next(err))
 })
 
+app.delete('/api/detail/:id', (req, res, next) => {
+  const { id } = req.params
+
+  const sql = `
+  delete from "todo"
+  where "todoId" = $1
+  `
+  const params = [id]
+
+  db.query(sql, params)
+    .then(result => {
+      res.status(204).json(result.rows[0])
+    })
+    .catch(err => next(err));
+})
+
 //for Heroku deployment
 if (process.env.NODE_ENV === 'production') {
   // Serve any static files
