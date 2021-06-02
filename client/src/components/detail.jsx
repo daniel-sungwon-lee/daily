@@ -90,7 +90,11 @@ export default function Detail(props) {
   }
 
   const handleDelete = (todoId) => {
-
+    fetch(`/api/detail/${todoId}`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" }
+    })
+      .catch(() => window.location.reload())
   }
 
   return (
