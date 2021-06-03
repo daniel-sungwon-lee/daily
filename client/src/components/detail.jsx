@@ -36,6 +36,9 @@ const useStyles = makeStyles({
   },
   checkbox: {
     color: "#788DFF !important"
+  },
+  label: {
+    cursor: "pointer"
   }
 })
 
@@ -134,7 +137,8 @@ export default function Detail(props) {
                                 </ListItemIcon>
 
                                 <label htmlFor={todoId} className="mb-0">
-                                  <ListItemText id={todoId} primary={action} />
+                                  <ListItemText id={todoId} primary={action}
+                                   className={classes.label} />
                                 </label>
 
                                 <ListItemSecondaryAction>
