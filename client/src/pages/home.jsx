@@ -223,7 +223,7 @@ export default function Home(props) {
 
                                               <MenuItem onClick={() => handleDetail(popupState, id)}>
                                                 <div className="p-2" style={{ color: "#4F5DFF" }}>
-                                                  detail
+                                                  todo
                                                 </div>
                                               </MenuItem>
 
