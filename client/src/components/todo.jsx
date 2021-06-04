@@ -49,7 +49,7 @@ export default function Todo(props) {
       <div className="m-3">
 
         <DialogTitle>
-          Add Todo
+          Add To-Do
         </DialogTitle>
 
         <form onSubmit={handleSubmit}>
