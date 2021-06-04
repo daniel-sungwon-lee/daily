@@ -120,7 +120,9 @@ export default function Detail(props) {
                         <h4 className={classes.emp}>much empty...</h4>
                       </div>
 
-                      <h2>To-Do</h2>
+                      <h2>
+                        To-Do
+                      </h2>
 
                       <List>
                         {
