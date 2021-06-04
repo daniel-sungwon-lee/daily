@@ -11,7 +11,8 @@ const useStyles = makeStyles({
   paper: {
     padding: "3rem",
     borderRadius: "1rem",
-    position: "relative"
+    position: "relative",
+    minHeight: "75vh"
   },
   emp: {
     position: "absolute",
@@ -118,6 +119,8 @@ export default function Detail(props) {
                       <div className={empty} style={{ opacity: "0.5" }}>
                         <h4 className={classes.emp}>much empty...</h4>
                       </div>
+
+                      <h2>To-Do</h2>
 
                       <List>
                         {
