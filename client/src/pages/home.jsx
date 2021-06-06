@@ -61,6 +61,7 @@ export default function Home(props) {
   const [delId, setDelId] = useState(null)
   const [openDetail, setOpenDetail] = useState(false)
   const [detail, setDetail] = useState(null)
+  const [actionWord, setActionWord] = useState('')
 
   const classes = useStyles()
   const { enqueueSnackbar, closeSnackbar } = useSnackbar()
@@ -106,15 +107,17 @@ export default function Home(props) {
     setDelId(id)
   }
 
-  const handleDetail = (popupState, id) => {
+  const handleDetail = (popupState, id, action) => {
     popupState.close()
     setOpenDetail(true)
     setDetail(id)
+    setActionWord(action)
   }
 
-  const handleDetail2 = (id) => {
+  const handleDetail2 = (id, action) => {
     setOpenDetail(true)
     setDetail(id)
+    setActionWord(action)
   }
 
   return (
@@ -221,7 +224,7 @@ export default function Home(props) {
                                                 </div>
                                               </MenuItem>
 
-                                              <MenuItem onClick={() => handleDetail(popupState, id)}>
+                                              <MenuItem onClick={() => handleDetail(popupState, id, action)}>
                                                 <div className="p-2" style={{ color: "#4F5DFF" }}>
                                                   todo
                                                 </div>
@@ -237,7 +240,7 @@ export default function Home(props) {
                                 </div>
 
                                 <div className="d-flex justify-content-center mt-4">
-                                  <h4 className={classes.action} onClick={() => handleDetail2(id)}>
+                                  <h4 className={classes.action} onClick={() => handleDetail2(id, action)}>
                                     {action}
                                   </h4>
                                 </div>
@@ -265,7 +268,7 @@ export default function Home(props) {
                   <Delete open={del} setOpen={setDel} id={delId} userId={userId} />
 
                   <Detail open={openDetail} setOpen={setOpenDetail} id={detail}
-                   setLoading={setLoading} />
+                   setLoading={setLoading} action={actionWord} />
 
                  </>
         }

@@ -48,7 +48,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Detail(props) {
-  const { setLoading, open, setOpen, id } = props;
+  const { setLoading, open, setOpen, id, action } = props;
 
   const classes = useStyles();
   const [show, setShow] = useState(true)
