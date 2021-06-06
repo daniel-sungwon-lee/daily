@@ -121,8 +121,11 @@ export default function Detail(props) {
                       </div>
 
                       <h2>
-                        To-Do
+                        <span style={{color:"#4F5DFF" }}>{action}</span>
                       </h2>
+                      <h3 className="mt-3 ml-2">
+                        To-Do
+                      </h3>
 
                       <List>
                         {
