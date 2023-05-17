@@ -15,7 +15,7 @@
     "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
     "start": "node server.js",
     "db:import": "bash scripts/db-import.bash",
-    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd client && npm install --legacy-peer-deps && npm install --legacy-peer-deps --only=dev --no-shrinkwrap && npm run build"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@material-ui/lab": "^4.0.0-alpha.57",
-    "argon2": "^0.27.2",
+    "argon2": "^0.30.3",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",
