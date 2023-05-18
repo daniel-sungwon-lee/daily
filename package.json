@@ -10,12 +10,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "cd client && npm start",
+    "client": "cd client && yarn start",
     "server": "nodemon server.js",
-    "dev": "concurrently --kill-others-on-fail \"npm run server\" \"npm run client\"",
+    "dev": "concurrently --kill-others-on-fail \"yarn run server\" \"yarn run client\"",
     "start": "node server.js",
     "db:import": "bash scripts/db-import.bash",
-    "heroku-postbuild": "cd client && npm install --legacy-peer-deps && npm install --legacy-peer-deps --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd client && yarn install && yarn install --only=dev --no-shrinkwrap && yarn run build"
   },
   "repository": {
     "type": "git",
